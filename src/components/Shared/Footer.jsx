@@ -1,38 +1,66 @@
-import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaLinkedin, FaRegCopyright } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="max-w-[1024px] mx-auto mt-28 py-4 border-t border-[#ABB2BF]">
-      <div className="flex flex-col sm:flex-row justify-between items-center">
-      {/* <!-- Left Section --> */}
-      <div className="text-center sm:text-left">
-        <div className="flex items-center space-x-2">
-          <p className="font-semibold">Robiul</p>
-          <a href="robiul0278@gmail.com" className="text-gray-400 hover:text-gray-300">robiul0278@gmail.com</a>
+    <footer className="max-w-[1024px] mx-auto lg:mt-28 mt-10 py-8 border-t border-[#ABB2BF] text-gray-300">
+      <div className="flex flex-col md:flex-row justify-between items-center md:items-start">
+        {/* Left Section */}
+        <div className="text-center md:text-left mb-6 md:mb-0">
+          <div className="flex flex-col items-center md:items-start">
+            <p className="font-bold text-lg">Robiul Hasan</p>
+            <button
+              onClick={() => navigator.clipboard.writeText("robiul0278@gmail.com")}
+              className="text-sm text-gray-400 hover:text-gray-300 mt-1 transition-all duration-200"
+              title="Click to copy email address"
+            >
+              robiul0278@gmail.com
+            </button>
+          </div>
+          <p className="mt-2 text-sm">Full Stack Developer</p>
         </div>
-        <p className="mt-1">Web designer and front-end developer</p>
-      </div>
 
-        <div className="mt-4 sm:mt-0 text-center sm:text-right">
-          <p>Follow</p>
-          <div className="flex justify-center sm:justify-end space-x-4 mt-1 text-gray">
-            <a href="https://github.com/robiul0278" target="_blank" className="hover:text-white">
-              <FaGithub />
+        {/* Right Section */}
+        <div className="text-center md:text-right">
+          <p className="font-bold text-lg">Follow Me</p>
+          <div className="flex justify-center md:justify-end mt-3 space-x-4 text-gray-400">
+            <a
+              href="https://github.com/robiul0278"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-all duration-200"
+            >
+              <FaGithub size={20} />
             </a>
-            <a href="https://www.linkedin.com/in/robiul-hasan-54ba1824b/" target="_blank" className="hover:text-white">
-              <FaLinkedin />
+            <a
+              href="https://www.linkedin.com/in/robiul-hasan-54ba1824b/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-all duration-200"
+            >
+              <FaLinkedin size={20} />
             </a>
-            <a href="https://www.facebook.com/robiul0278" target="_blank" className="hover:text-white">
-              <FaFacebook />
+            <a
+              href="https://www.facebook.com/robiul0278"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-all duration-200"
+            >
+              <FaFacebook size={20} />
             </a>
           </div>
         </div>
       </div>
-      <div className="mt-6 text-center text-gray">
-        <p>© Copyright 2022. Made by Robiul</p>
+
+      {/* Bottom Section */}
+      <div className="mt-8 text-center text-sm text-gray-400">
+        <span>
+          <FaRegCopyright className="inline mb-0.5" aria-label="Copyright" />Portfolio 2025. Made with
+          <span className="text-[#C778DD] px-1" aria-label="love">❤</span>by Robiul.
+        </span>
       </div>
+
     </footer>
-  )
-}
+  );
+};
 
 export default Footer;

@@ -12,7 +12,7 @@ const SmallCard = ({ project }) => {
             
             <div className="px-2 pt-2">
                 <h2 className="font-bold text-lg">{name}</h2>
-                <p className="text-sm text-gray-400">{description}</p>
+                <p className="text-sm text-gray-400">{description?.slice(0, 85)}{description?.length > 85 && '...'}</p>
             </div>
 
             <div className="flex items-center space-x-2 p-2">
@@ -26,13 +26,12 @@ const SmallCard = ({ project }) => {
                 <a href={github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-5 py-1.5 flex items-center justify-center space-x-2 text-white text-sm font-medium border-color hover:border-[#C778DD]">
+                    className="px-5 py-1.5 flex items-center justify-center space-x-2 text-white text-sm font-medium border-color hover:text-[#C778DD]">
                     <span>Repo</span>
                     <LuSquareArrowOutUpRight />
                 </a>
             </div>
         </div>
-
     )
 }
 

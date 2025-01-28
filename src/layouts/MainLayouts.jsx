@@ -3,6 +3,7 @@ import Navbar from "../components/Shared/Navbar";
 import Footer from "../components/Shared/Footer";
 import Social from "../components/Shared/Social";
 import Snowfall from "react-snowfall";
+import { ToastContainer } from "react-toastify";
 
 const MainLayouts = () => {
   return (
@@ -19,12 +20,13 @@ const MainLayouts = () => {
         margin: '0 auto',
       }}
     />
-      <div className="absolute top-0 left-0 z-50">
+      <div className="sticky top-0 left-0 z-50">
         <Social />
       </div>
       <Navbar />
       <Outlet />
       <Footer />
+      <ToastContainer />
     </div>
   );
 };

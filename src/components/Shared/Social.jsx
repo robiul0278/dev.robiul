@@ -2,7 +2,9 @@ import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Social = () => {
   return (
-<div className="flex">
+<div data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="1500" className="md:flex absolute hidden ">
   {/* Vertical Navbar */}
   <div className="flex flex-col items-center justify-between px-4 text-gray-400 h-[305px]">
     {/* Top Vertical Line */}

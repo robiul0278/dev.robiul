@@ -4,11 +4,16 @@
 
 
 body{
-  font-family: 'Inter', sans-serif;
-  background-color: #000000;
+  font-family: 'Fira Code', monospace;
+  background-color: #1E1E1E;
   color:#ffffff;
   scroll-behavior: smooth;
 }
+
+h1, h2, h3, h4, h6,a, p{
+  font-family: 'Fira Code', monospace;
+}
+
 
 .bg-input{
   background-color: #282C33;
