@@ -13,7 +13,7 @@ const FanFacts = () => {
     return (
         <section className="relative">
             <div className="max-w-[1024px] mx-auto lg:mt-16 mt-5 relative p-5 lg:p-0">
-                <div className="flex items-center justify-between text-[26px] lg:text-[32px]">
+                <div className="flex items-center justify-between text-[24px] lg:text-[28px]">
                     {/* Title Section */}
                     <div className="flex items-center">
                         <span className="text-[#C778DD] font-semibold mr-1">#</span>
@@ -28,26 +28,26 @@ const FanFacts = () => {
                         <span 
                         data-aos="fade-right"
                          className="p-2 border border-gray">
-                            I like summer more than winter
+                            I like winter more than summer
                         </span>
                         {/* <span data-aos="fade-left" className="p-2 border border-gray">
                             I often bike with my friends
                         </span> */}
-                        <span data-aos="fade-right" className="p-2 border border-gray">
+                        {/* <span data-aos="fade-right" className="p-2 border border-gray">
                             I like pizza and kacchi
-                        </span>
+                        </span> */}
                         <span data-aos="fade-right" className="p-2 border border-purple">
                             I like spending time with friends the most
                         </span>
-                        <span data-aos="fade-right" className="p-2 border border-gray">
+                        {/* <span data-aos="fade-right" className="p-2 border border-gray">
                             My favorite movie is ROCKSTAR
-                        </span>
+                        </span> */}
                         <span data-aos="fade-right" className="p-2 border border-gray">
                             Exploring new places and cultures
                         </span>
-                        <span data-aos="fade-right" className="p-2 border border-gray">
+                        {/* <span data-aos="fade-right" className="p-2 border border-gray hover:scale-105 transition-transform duration-300">
                             It’s not a bug; it’s a feature!
-                        </span>
+                        </span> */}
                     </div>
 
                     {/* <!-- Image Section --> */}

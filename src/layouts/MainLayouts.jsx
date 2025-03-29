@@ -7,7 +7,7 @@ import { ToastContainer } from "react-toastify";
 
 const MainLayouts = () => {
   return (
-    <div className="relative max-w-[1366px] mx-auto bg-[#282C33]">
+    <div className="relative max-w-[1366px] mx-auto bg-gray-900">
     <Snowfall
       color="#ffffff" // Cyan snowflakes
       snowflakeCount={10} // Increase the number of snowflakes

@@ -30,7 +30,7 @@ const Projects = () => {
     return (
         <section className="relative">
             <div className="max-w-[1024px] mx-auto lg:mt-12 p-5 lg:p-0">
-                <div className="flex items-center justify-between text-[26px] lg:text-[32px] relative">
+                <div className="flex items-center justify-between text-[24px] lg:text-[28px] relative">
                     {/* Title Section */}
                     <div className="flex items-center w-3/4">
                         <span className="text-[#C778DD] font-semibold mr-1">#</span>
@@ -41,7 +41,7 @@ const Projects = () => {
                     {/* View All Section */}
                     <Link to="/projects"
                         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                        className="flex items-center font-semibold text-[12px] lg:text-[16px] hover:text-[#C778DD] text-white cursor-pointer hover:underline">
+                        className="flex items-center font-semibold text-[11px] lg:text-[12px] hover:text-[#C778DD] text-white cursor-pointer hover:underline">
                         <a>View all</a>
                         <MdDoubleArrow />
                     </Link>

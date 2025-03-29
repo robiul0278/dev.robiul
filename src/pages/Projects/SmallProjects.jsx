@@ -27,7 +27,7 @@ const SmallProjects = () => {
     }, []);
     return (
         <section className="relative">
-            <div className="max-w-[1024px] mx-auto mt-12">
+            <div className="max-w-[1024px] mx-auto mt-12 p-5 lg:p-0">
                 <div className="flex items-center justify-between text-[32px] relative">
                     {/* Title Section */}
                     <div className="flex items-center w-3/4">

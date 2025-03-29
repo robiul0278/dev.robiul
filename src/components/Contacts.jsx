@@ -51,7 +51,7 @@ const Contacts = () => {
     return (
         <section className="relative" id="contacts">
             <div className="max-w-[1024px] mx-auto relative p-5 lg:p-0">
-                <div  className="flex items-center justify-between text-[26px] lg:text-[32px] ">
+                <div  className="flex items-center justify-between text-[24px] lg:text-[28px] ">
                     {/* Title Section */}
                     <div className="flex items-center w-full">
                         <span className="text-[#C778DD] font-semibold mr-1">#</span>
@@ -60,11 +60,11 @@ const Contacts = () => {
                     </div>
                 </div>
                 <div  className="flex flex-col md:flex-row gap-5">
-                    <div data-aos="fade-top" className="text-gray text-sm lg:text-[17px] py-5 lg:p-0 flex flex-col gap-5 lg:gap-10 justify-center lg:w-1/2">
+                    <div data-aos="fade-down" className="text-gray text-sm lg:text-[17px] py-5 lg:p-0 flex flex-col gap-5 lg:gap-10 justify-center lg:w-1/2">
                         <h2>Who am i?</h2>
                         <a>I’m interested in freelance opportunities. However, if you have other request or question, don’t hesitate to contact me</a>
                     </div>
-                    <div data-aos="fade-bottom" className="lg:w-1/2">
+                    <div data-aos="fade-down" className="lg:w-1/2">
                         <form  onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                             {/* <!-- Name and Email --> */}
                             <div  className="flex gap-2">

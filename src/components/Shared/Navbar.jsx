@@ -49,24 +49,24 @@ const Navbar = () => {
             </Link>
           </ul>
           <a
-            href="/Resume.pdf"
+            href="/Robiul Hasan CV.pdf"
             download
             type="submit"
             className="px-6 py-1.5 flex text-[#ABB2BF] hover:text-white items-center justify-center space-x-2 border-purple focus:outline-none hover:border-[#ABB2BF]"
           >
-            <span>Resume</span> <BiDownload />
+            <span>Download CV</span> <BiDownload />
           </a>
         </div>
 
         {/* Mobile Menu Toggle */}
         <div className="flex items-center md:hidden">
           <a
-            href="/Resume.pdf"
+            href="/Robiul Hasan CV.pdf"
             download
             type="submit"
             className="md:hidden ml-6 px-4 py-1.5 flex text-[#ABB2BF] hover:text-white items-center justify-center space-x-2 border border-purple focus:outline-none hover:border-white"
           >
-            <span>Resume</span> <BiDownload />
+            <span>Download CV</span> <BiDownload />
           </a>
           <button
             className="md:hidden text-white text-2xl focus:outline-none ml-4"

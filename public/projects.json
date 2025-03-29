@@ -10,20 +10,21 @@
   },
   {
     "id": 2,
-    "image": "https://i.ibb.co.com/TKNHP3c/mobileshop.png",
+    "image": "https://i.ibb.co.com/JWq0GHFb/screencapture-localhost-5173-2025-01-29-00-51-46-1-optimized-50.png",
     "technology": "React, firebase, Node.js, Express, JWT, Tailwind, axios, daisyui",
-    "name": "Mobile Shop",
+    "name": "Gadget Shop",
     "description": "An online mobile store offering a range of products with secure payment and user-friendly navigation.",
     "website": "https://mymobile-shop.netlify.app/",
     "github": "https://github.com/robiul0278/Mobile-Shop-Client"
   },
   {
     "id": 3,
-    "image": "https://i.ibb.co.com/dP5tFBG/academia.png",
-    "technology": "React, firebase, Node.js, Express, JWT, Stripe, Tailwind, axios,School",
-    "name": "Online School",
-    "description": "A comprehensive online education platform providing courses, enrollment, and payment integration.",
-    "website": "https://academia-client.netlify.app/",
-    "github": "https://github.com/robiul0278/academia-client"
+    "image": "https://i.ibb.co.com/WN0CXpYn/todo-app.png",
+    "technology": "React, Redux, Node.js, Express, MongoDB, Tailwind, Shadcn UI",
+    "name": "Todo App",
+    "description": "A simple and interactive Todo application for managing tasks with task management, and real-time updates.",
+    "website": "https://totodos.netlify.app/",
+    "github": "https://github.com/robiul0278/Todo-App-Client"
   }
+  
 ]

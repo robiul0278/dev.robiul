@@ -32,8 +32,8 @@ const Hero = () => {
     return (
         <section className="relative">
             <div className="font-[sans-serif] max-w-[1024px] mx-auto  rounded overflow-hidden lg:mt-4">
-                <div className="flex flex-col md:flex-row lg:flex-row justify-between max-sm:gap-10 lg:py-10 lg:p-0">
-                    <div className="text-start flex flex-col gap-3 px-5 lg:px-0 lg:gap-5 md:pt-16 order-2 md:order-1 lg:order-1">
+                <div className="flex flex-col-reverse md:flex-row lg:flex-row justify-between  lg:py-10 lg:p-0">
+                    <div className="text-start flex flex-col gap-3 pt-5 px-5 lg:px-0 lg:gap-5 md:pt-16 order-2 md:order-1 lg:order-1">
                         <h3 data-aos="fade-right" className="font-bold text-[20px] md:text-[32px] text-[#C778DD] leading-tight tracking-tight lg:tracking-normal"><span className="text-white">Robiul is a </span>MERN stack developer,<span className="text-white"> and creating dynamic</span> web apps.</h3>
 
                         <p data-aos="fade-left" className="text-[#ABB2BF] text-[12px] lg:text-[16px]">He crafts responsive websites where technologies <br className="hidden lg:flex" /> meet creativity</p>
@@ -46,10 +46,8 @@ const Hero = () => {
                     <div data-aos="fade-up" className="order-1 lg:order-2">
                         <div  className="relative md:flex items-center justify-center ">
                             <img src={image1} alt="logo" className="absolute top-20  left-[67px] transform -translate-x-1/2 w-[100px] md:-w-[155px] md:-h-[155px]" />
-
-
                             <Lottie
-                                className="lg:w-[457px] lg:h-[300px] w-full md:h-[360px] h-[180px]"
+                                className="lg:w-[457px] lg:h-[300px] w-full md:h-[360px] h-[185px] px-5"
                                 animationData={Cover}
                                 loop={true}
                                 autoplay={true}
@@ -83,13 +81,13 @@ const Hero = () => {
                 <div data-aos="zoom-in"  className="max-w-[600px] mx-auto p-5 lg:mt-5 lg:p-0 ">
                     <div className="relative p-2 text-gray-100  border border-[#ABB2BF]">
                         <div className="absolute -top-2 lg:-top-5 left-6">
-                            <img src={image4} alt="Quotation" className="w-5 h-4 lg:w-10 lg:h-9  bg-[#282C33] lg:p-3 p-1" />
+                            <img src={image4} alt="Quotation" className="w-5 h-4 lg:w-10 lg:h-9  bg-gray-900 lg:p-3 p-1" />
                         </div>
                         <p className="text-center text-[12px] lg:text-[20px]">
                             With great power comes great responsibility
                         </p>
                         <div className="absolute -bottom-2 lg:-bottom-5 right-6">
-                            <img src={image4} alt="Quotation" className="w-5 h-4 lg:w-10 lg:h-9  bg-[#282C33] lg:p-3 p-1" />
+                            <img src={image4} alt="Quotation" className="w-5 h-4 lg:w-10 lg:h-9  bg-gray-900 lg:p-3 p-1" />
                         </div>
 
                     </div>

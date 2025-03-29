@@ -13,7 +13,7 @@ const Skills = () => {
     return (
         <section className="relative">
             <div className="max-w-[1024px] mx-auto lg:mt-16 mt-10 relative p-5 lg:p-0">
-                <div className="flex items-center justify-between text-[26px] lg:text-[32px]">
+                <div className="flex items-center justify-between text-[24px] lg:text-[28px]">
                     {/* Title Section */}
                     <div className="flex items-center">
                         <span className="text-[#C778DD] font-semibold mr-1">#</span>
