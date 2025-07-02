@@ -27,6 +27,7 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef(null);
 
   const {
     reset,
@@ -66,53 +67,64 @@ const Contact = () => {
       );
   };
 
-useEffect(() => {
-  const ctx = gsap.context(() => {
-    const form = contentRef.current?.querySelector("form");
-    const info = contentRef.current?.querySelector(".info");
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const form = contentRef.current?.querySelector("form");
+      const info = contentRef.current?.querySelector(".info");
 
-    if (form) {
-      gsap.fromTo(
-        form,
-        { opacity: 0, x: 50 },
-        { opacity: 1, x: 0, duration: 1.2, ease: "power3.out", delay: 0.3 }
-      );
-    }
+      gsap.from(titleRef.current, {
+        x: -100,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+      });
 
-    if (info) {
-      gsap.fromTo(
-        info,
-        { opacity: 0, x: -50 },
-        { opacity: 1, x: 0, duration: 1.2, ease: "power3.out", delay: 0.3 }
-      );
-    }
-  }, sectionRef);
+      if (form) {
+        gsap.fromTo(
+          form,
+          { opacity: 0, x: 50 },
+          { opacity: 1, x: 0, duration: 1.2, ease: "power3.out", delay: 0.3 }
+        );
+      }
 
-  return () => ctx.revert();
-}, []);
+      if (info) {
+        gsap.fromTo(
+          info,
+          { opacity: 0, x: -50 },
+          { opacity: 1, x: 0, duration: 1.2, ease: "power3.out", delay: 0.3 }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
 
   return (
     <section
       ref={sectionRef}
       id="contact"
-      className="relative py-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden px-4"
+      className="relative py-16 bg-white text-gray-900 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 dark:text-white overflow-hidden transition-colors duration-500"
     >
       <div className="max-w-7xl mx-auto px-5 lg:px-0">
         <div ref={contentRef} className="space-y-8">
-          {/* Section Title */}
-          <div className="flex items-center text-2xl font-semibold">
-            <span className="text-[#C778DD] mr-2">#</span>
-            <h2>contacts</h2>
-            <div className="flex-grow border-t  ml-3 max-w-[150px]" />
+          <div
+            ref={titleRef}
+            className="flex items-center justify-between text-[26px] lg:text-[32px]"
+          >
+            <div className="flex items-center">
+              <span className="text-[#C778DD] font-semibold mr-1">#</span>
+              <h2 className="font-bold whitespace-nowrap">Contact</h2>
+              <hr className="flex-grow ml-3 border-t w-32 lg:w-[240px] border-gray-300 dark:border-white/30" />
+            </div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 items-start">
             {/* Right Card Form */}
-            <Card className="bg-slate-900 border-0 text-white max-w-full">
+            <Card className="bg-gray-100 text-gray-900 border border-gray-300 dark:bg-slate-900 dark:text-white dark:border-0 transition-all duration-500">
               <CardHeader>
                 <CardTitle className="text-xl">Let’s Connect</CardTitle>
-                <CardDescription className="text-slate-400">
+                <CardDescription className="text-gray-600 dark:text-slate-400">
                   Feel free to drop me a message.
                 </CardDescription>
               </CardHeader>
@@ -122,26 +134,26 @@ useEffect(() => {
                   <div className="flex flex-col md:flex-row gap-4">
                     <div className="w-full md:w-1/2">
                       <Input
-                        className="border-slate-700 placeholder:text-slate-400"
+                        className="border border-gray-300 placeholder:text-gray-500 dark:border-slate-700 dark:placeholder:text-slate-400"
                         type="text"
                         placeholder="Name"
                         {...register("name", { required: true })}
                       />
                       {errors.name && (
-                        <p className="text-xs  mt-1 ml-1">
+                        <p className="text-xs mt-1 ml-1 text-red-500 dark:text-red-400">
                           Name is required!
                         </p>
                       )}
                     </div>
                     <div className="w-full md:w-1/2">
                       <Input
-                        className=" border-slate-700 placeholder:text-slate-400"
+                        className="border border-gray-300 placeholder:text-gray-500 dark:border-slate-700 dark:placeholder:text-slate-400"
                         type="email"
                         placeholder="Email"
                         {...register("email", { required: true })}
                       />
                       {errors.email && (
-                        <p className="text-xs  mt-1 ml-1">
+                        <p className="text-xs mt-1 ml-1 text-red-500 dark:text-red-400">
                           Email is required!
                         </p>
                       )}
@@ -150,26 +162,26 @@ useEffect(() => {
 
                   {/* Title */}
                   <Input
-                    className=" border-slate-700 placeholder:text-slate-400"
+                    className="border border-gray-300 placeholder:text-gray-500 dark:border-slate-700 dark:placeholder:text-slate-400"
                     type="text"
                     placeholder="Title"
                     {...register("title", { required: true })}
                   />
                   {errors.title && (
-                    <p className="text-xs  ml-1">
+                    <p className="text-xs ml-1 text-red-500 dark:text-red-400">
                       Title is required!
                     </p>
                   )}
 
                   {/* Message */}
                   <Textarea
-                    className=" border-slate-700 placeholder:text-slate-400"
+                    className="border border-gray-300 placeholder:text-gray-500 dark:border-slate-700 dark:placeholder:text-slate-400"
                     placeholder="Message"
                     rows={10}
                     {...register("message", { required: true })}
                   />
                   {errors.message && (
-                    <p className="text-xs  ml-1">
+                    <p className="text-xs ml-1 text-red-500 dark:text-red-400">
                       Message is required!
                     </p>
                   )}
@@ -179,7 +191,7 @@ useEffect(() => {
                     <Button
                       type="submit"
                       variant="secondary"
-                      className=""
+                      className="bg-gray-800 text-white hover:bg-gray-700 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-all"
                     >
                       {loading ? "Sending..." : "Send"}
                     </Button>
@@ -187,23 +199,22 @@ useEffect(() => {
                 </form>
               </CardContent>
             </Card>
+
             {/* Left Info */}
             <div className="flex items-center justify-center w-full h-full">
-              <div className="space-y-5 text-slate-300 text-base leading-relaxed info text-center max-w-md">
-                <p className=" font-semibold">Who am I?</p>
+              <div className="space-y-5 text-gray-700 dark:text-slate-300 text-base leading-relaxed info text-center max-w-md">
+                <p className="font-semibold text-gray-900 dark:text-white">Who am I?</p>
                 <p>
-                  I’m interested in freelance opportunities. However, if you have
-                  other requests or questions, don’t hesitate to contact me.
+                  I’m interested in freelance opportunities. However, if you have other requests
+                  or questions, don’t hesitate to contact me.
                 </p>
               </div>
             </div>
-
-
-
           </div>
         </div>
       </div>
     </section>
+
   );
 };
 

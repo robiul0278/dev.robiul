@@ -55,7 +55,7 @@ const projects = [
   }
 ];
 
-export default function Portfolio() {
+const Portfolio = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -120,75 +120,95 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <section
-      id='projects'
-      ref={sectionRef}
-      className="relative py-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden px-4"
+<section
+  id="projects"
+  ref={sectionRef}
+  className="relative py-16 bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 text-gray-900 dark:text-white overflow-hidden"
+>
+  <div className="max-w-7xl mx-auto">
+    {/* Title */}
+    <div className="text-center mb-16">
+      <h2
+        ref={titleRef}
+        className="text-2xl md:text-4xl lg:text-4xl font-bold mb-6"
+      >
+        My <span className="text-gray-500 dark:text-gray-400">Portfolio</span>
+      </h2>
+      <p className="text-lg md:text-xl text-gray-700 dark:text-slate-300 max-w-2xl mx-auto">
+        Showcasing my latest projects and details!
+      </p>
+    </div>
+
+    <div
+      ref={gridRef}
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
     >
-      <div className="max-w-7xl mx-auto">
-        {/* Title */}
-        <div className="text-center mb-16">
-          <h2
-            ref={titleRef}
-            className="text-2xl md:text-4xl lg:text-4xl font-bold mb-6"
-          >
-            My <span className="text-gray-400">Portfolio</span>
-          </h2>
-          <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
-            Showcasing my latest projects and details!
-          </p>
-        </div>
-
-        <div
-          ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+      {projects.map((project, index) => (
+        <Card
+          key={index}
+          className="project-card group relative overflow-hidden border border-gray-200 dark:border-0 shadow pb-5 pt-0 bg-gray-50 dark:bg-slate-800"
         >
-          {projects.map((project, index) => (
-            <Card
-              key={index}
-              className="project-card group relative overflow-hidden border-0 cursor-pointer shadow pb-5 pt-0 bg-slate-800"
-            >
-              <div className="relative h-74 rounded-2xl overflow-hidden">
-                <Image
-                  width={300}
-                  height={300}
-                  src={project.image}
-                  alt={project.title}
-                  className="project-image w-full h-full object-cover transition-transform duration-700"
-                />
-                <div className={`project-overlay absolute inset-0 bg-gradient-to-br ${project.color} opacity-70 transition-opacity duration-300`} />
+          <div className="relative h-74 rounded-2xl overflow-hidden">
+            <Image
+              width={300}
+              height={300}
+              src={project.image}
+              alt={project.title}
+              className="project-image w-full h-full object-cover transition-transform duration-700"
+            />
 
-                <div className="project-content absolute inset-0 p-6 flex flex-col justify-end text-white transform translate-y-5 opacity-80 transition-all duration-400">
-                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-sm mb-4 opacity-90">{project.description}</p>
+            {/* Overlay */}
+            <div
+              className={`project-overlay absolute inset-0 bg-gradient-to-br ${project.color} opacity-70 transition-opacity duration-300`}
+            />
 
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2 py-1 bg-white/20 rounded-lg text-xs font-medium backdrop-blur-sm"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+            {/* Content */}
+            <div className="project-content absolute inset-0 p-6 flex flex-col justify-end transform translate-y-5 opacity-90 transition-all duration-400">
+              <h3 className="text-xl font-bold mb-2 text-white dark:text-white">
+                {project.title}
+              </h3>
+              <p className="text-sm mb-4 text-white/90 dark:text-white/80">
+                {project.description}
+              </p>
 
-                  <div className="flex gap-3 mb-2">
-                    <Button size="sm" variant="outline" className="border-white/30 bg-transparent text-white hover:bg-white/20">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      View
-                    </Button>
-                    <Button size="sm" variant="outline" className="border-white/30 bg-transparent text-white hover:bg-white/20">
-                      <Github className="w-4 h-4 mr-2" />
-                      Code
-                    </Button>
-                  </div>
-                </div>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.tags.map((tag, idx) => (
+                  <span
+                    key={idx}
+                    className="px-2 py-1 bg-white/20 dark:bg-white/20 rounded-lg text-xs font-medium backdrop-blur-sm text-white"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
+
+              <div className="flex gap-3 mb-2">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="border-white/40 bg-white/10 dark:bg-transparent text-white hover:bg-white/20"
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  View
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="border-white/40 bg-white/10 dark:bg-transparent text-white hover:bg-white/20"
+                >
+                  <Github className="w-4 h-4 mr-2" />
+                  Code
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>
+
   );
 }
+
+export default Portfolio;

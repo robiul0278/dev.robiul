@@ -31,7 +31,7 @@ const innerSkills = [
     { icon: <FaNodeJs className="text-green-500 w-6 h-6" />, name: "Node" },
 ];
 
-export default function Orbit() {
+const Orbit = () =>  {
     const outerRef = useRef<HTMLDivElement>(null);
     const innerRef = useRef<HTMLDivElement>(null);
 
@@ -104,3 +104,6 @@ export default function Orbit() {
         </div>
     );
 }
+
+
+export default Orbit;
