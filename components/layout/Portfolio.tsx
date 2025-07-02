@@ -186,7 +186,7 @@ const Portfolio = () => {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="border-white/40 bg-white/10 dark:bg-transparent text-white hover:bg-white/20"
+                  className="border-white/40 bg-white/10 dark:bg-transparent text-white hover:bg-white/20 cursor-pointer"
                 >
                   <ExternalLink className="w-4 h-4 mr-2" />
                   View
@@ -194,7 +194,7 @@ const Portfolio = () => {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="border-white/40 bg-white/10 dark:bg-transparent text-white hover:bg-white/20"
+                  className="border-white/40 bg-white/10 dark:bg-transparent text-white hover:bg-white/20 cursor-pointer"
                 >
                   <Github className="w-4 h-4 mr-2" />
                   Code

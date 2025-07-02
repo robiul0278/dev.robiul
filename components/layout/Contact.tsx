@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -16,6 +17,8 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 
+gsap.registerPlugin(ScrollTrigger);
+
 type FormData = {
   name: string;
   email: string;
@@ -27,7 +30,7 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef(null);
+  const titleRef = useRef<HTMLDivElement>(null);
 
   const {
     reset,
@@ -69,36 +72,59 @@ const Contact = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Animate title on scroll
+      if (titleRef.current) {
+        gsap.from(titleRef.current, {
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+          x: -100,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out",
+        });
+      }
+
       const form = contentRef.current?.querySelector("form");
       const info = contentRef.current?.querySelector(".info");
 
-      gsap.from(titleRef.current, {
-        x: -100,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-      });
-
+      // Animate form on scroll
       if (form) {
-        gsap.fromTo(
-          form,
-          { opacity: 0, x: 50 },
-          { opacity: 1, x: 0, duration: 1.2, ease: "power3.out", delay: 0.3 }
-        );
+        gsap.from(form, {
+          scrollTrigger: {
+            trigger: form,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+          opacity: 0,
+          x: 50,
+          duration: 1.2,
+          ease: "power3.out",
+          delay: 0.3,
+        });
       }
 
+      // Animate info text on scroll
       if (info) {
-        gsap.fromTo(
-          info,
-          { opacity: 0, x: -50 },
-          { opacity: 1, x: 0, duration: 1.2, ease: "power3.out", delay: 0.3 }
-        );
+        gsap.from(info, {
+          scrollTrigger: {
+            trigger: info,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+          opacity: 0,
+          x: -50,
+          duration: 1.2,
+          ease: "power3.out",
+          delay: 0.3,
+        });
       }
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
-
 
   return (
     <section
@@ -202,8 +228,8 @@ const Contact = () => {
 
             {/* Left Info */}
             <div className="flex items-center justify-center w-full h-full">
-              <div className="space-y-5 text-gray-700 dark:text-slate-300 text-base leading-relaxed info text-center max-w-md">
-                <p className="font-semibold text-gray-900 dark:text-white">Who am I?</p>
+              <div className="space-y-5 text-gray-700 dark:text-green-400 transition-colors duration-500 text-base leading-relaxed info text-center max-w-md">
+                <p className="font-semibold text-gray-900 dark:text-cyan-300 transition-colors duration-500">Who am I?</p>
                 <p>
                   I’m interested in freelance opportunities. However, if you have other requests
                   or questions, don’t hesitate to contact me.
@@ -214,7 +240,6 @@ const Contact = () => {
         </div>
       </div>
     </section>
-
   );
 };
 
