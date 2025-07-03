@@ -127,10 +127,10 @@ const Portfolio = () => {
 >
   <div className="max-w-7xl mx-auto">
     {/* Title */}
-    <div className="text-center mb-16">
+    <div className="text-center mb-5 md:mb-16 lg:mb-16">
       <h2
         ref={titleRef}
-        className="text-2xl md:text-4xl lg:text-4xl font-bold mb-6"
+        className="text-2xl md:text-4xl lg:text-4xl font-bold md:mb-6 lg:mb-6"
       >
         My <span className="text-gray-500 dark:text-gray-400">Portfolio</span>
       </h2>
@@ -141,7 +141,7 @@ const Portfolio = () => {
 
     <div
       ref={gridRef}
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-4 md:p-0 lg:p-0"
     >
       {projects.map((project, index) => (
         <Card

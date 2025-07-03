@@ -6,11 +6,11 @@ export const baseApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/api/v1' }),
   tagTypes: ["auth"],
   endpoints: (builder) => ({
-    registerUser: builder.mutation({
+    createProject: builder.mutation({
       query: (data) => {
         // console.log(data);
         return {
-          url: `/auth/register`,
+          url: `/project/create`,
           method: "POST",
           body: data
         }
@@ -32,4 +32,4 @@ export const baseApi = createApi({
 });
 
 
-export const { useLoginUserMutation, useRegisterUserMutation } = baseApi;
+export const { useLoginUserMutation, useCreateProjectMutation } = baseApi;

@@ -13,8 +13,8 @@ const hindSiliguri = Hind_Siliguri({
 
 
 export const metadata: Metadata = {
-  title: "Diploma Career",
-  description: "Diploma job circular website",
+  title: "dev.robiul",
+  description: "A personal portfolio website!",
 };
 
 export default function RootLayout({

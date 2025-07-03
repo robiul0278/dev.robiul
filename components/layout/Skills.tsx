@@ -117,7 +117,7 @@ const Skills = () => {
             {skillBlocks.map((block, idx) => (
               <div
                 key={idx}
-                className="rounded-lg shadow-md p-4 w-full sm:w-[45%] bg-gray-100 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
+                className="rounded-lg shadow p-4 w-full sm:w-[45%] bg-gray-100 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
               >
                 <div className="flex items-center gap-2 mb-2">
                   {block.icon}

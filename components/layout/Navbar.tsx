@@ -103,7 +103,7 @@ const Navbar = () => {
             {/* CTA Button */}
             <Button
               className="nav-button hidden md:block bg-black text-white dark:bg-gradient-to-r dark:from-pink-500 dark:to-purple-500 dark:text-white px-6 py-2 rounded-full hover:scale-105 transition-all duration-300 cursor-pointer"
-              onClick={() => handleNavClick('#contact')}
+               onClick={() => window.open("https://drive.google.com/file/d/1CAFJ2bK8N8ChI_YL44ml4oo506l4ACaM/view?usp=drive_link", "_blank")}
             >
               Download
             </Button>
@@ -136,7 +136,7 @@ const Navbar = () => {
               ))}
               <Button
                 className="bg-black text-white py-3 rounded-full hover:scale-105 transition-all duration-300 mt-4 cursor-pointer dark:bg-gradient-to-r dark:from-pink-500 dark:to-purple-500 dark:text-white"
-                onClick={() => handleNavClick('#contact')}
+                 onClick={() => window.open("https://drive.google.com/file/d/1CAFJ2bK8N8ChI_YL44ml4oo506l4ACaM/view?usp=drive_link", "_blank")}
               >
                 Download
               </Button>

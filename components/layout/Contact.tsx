@@ -228,8 +228,8 @@ const Contact = () => {
 
             {/* Left Info */}
             <div className="flex items-center justify-center w-full h-full">
-              <div className="space-y-5 text-gray-700 dark:text-green-400 transition-colors duration-500 text-base leading-relaxed info text-center max-w-md">
-                <p className="font-semibold text-gray-900 dark:text-cyan-300 transition-colors duration-500">Who am I?</p>
+              <div className="space-y-5 text-gray-700 dark:text-white transition-colors duration-500 text-base leading-relaxed info text-center max-w-md">
+                <p className="font-semibold text-gray-900 dark:text-pink-500 transition-colors duration-500">Who am I?</p>
                 <p>
                   I’m interested in freelance opportunities. However, if you have other requests
                   or questions, don’t hesitate to contact me.
