@@ -147,7 +147,8 @@ const Contact = () => {
 
           <div className="grid lg:grid-cols-2 gap-8 items-start">
             {/* Right Card Form */}
-            <Card className="bg-gray-100 text-gray-900 border border-gray-300 dark:bg-slate-900 dark:text-white dark:border-0 transition-all duration-500 order-2 lg:order-1">
+            <div className=" order-2 lg:order-1">
+       <Card className="bg-gray-100 text-gray-900 border border-gray-300 dark:bg-slate-900 dark:text-white dark:border-0 transition-all duration-500">
               <CardHeader>
                 <CardTitle className="text-xl">Let’s Connect</CardTitle>
                 <CardDescription className="text-gray-600 dark:text-slate-400">
@@ -225,6 +226,8 @@ const Contact = () => {
                 </form>
               </CardContent>
             </Card>
+            </div>
+     
 
             <div className="order-1 lg:order-2 flex items-center justify-center  w-full h-full">
             {/* Left Info */}
