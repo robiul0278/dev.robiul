@@ -9,9 +9,8 @@ import {
     FaReact,
     FaNodeJs,
     FaGitAlt,
-    FaFigma,
 } from "react-icons/fa";
-import { SiMongodb, SiTypescript } from "react-icons/si";
+import { SiExpress, SiMongodb, SiNextdotjs, SiRedux, SiTypescript } from "react-icons/si";
 
 const outerSkills = [
     { icon: <FaHtml5 className="text-orange-500 w-6 h-6" />, name: "HTML5" },
@@ -19,15 +18,15 @@ const outerSkills = [
     { icon: <FaJs className="text-yellow-400 w-6 h-6" />, name: "JavaScript" },
     { icon: <SiTypescript className="text-blue-400 w-6 h-6" />, name: "TypeScript" },
     { icon: <FaReact className="text-cyan-400 w-6 h-6" />, name: "React" },
-    { icon: <FaNodeJs className="text-green-500 w-6 h-6" />, name: "Node.js" },
-    { icon: <SiMongodb className="text-green-600 w-6 h-6" />, name: "MongoDB" },
+    { icon: <SiRedux className="text-orange-500 w-6 h-6" />, name: "Node.js" },
+    { icon: <SiExpress className="text-green-600 w-6 h-6" />, name: "MongoDB" },
     { icon: <FaGitAlt className="text-orange-400 w-6 h-6" />, name: "Git" },
 ];
 
 const innerSkills = [
-    { icon: <FaFigma className="text-pink-500 w-6 h-6" />, name: "Figma" },
-    { icon: <FaGitAlt className="text-orange-400 w-6 h-6" />, name: "Git" },
-    { icon: <FaReact className="text-cyan-400 w-6 h-6" />, name: "React" },
+    { icon: <SiNextdotjs className="text-black-500 w-6 h-6" />, name: "Figma" },
+    { icon: <FaJs className="text-orange-400 w-6 h-6" />, name: "Git" },
+    { icon: <SiMongodb className="text-green-400 w-6 h-6" />, name: "React" },
     { icon: <FaNodeJs className="text-green-500 w-6 h-6" />, name: "Node" },
 ];
 
@@ -83,12 +82,12 @@ const Orbit = () =>  {
     return (
         <div className="relative w-full h-[450px] flex items-center justify-center overflow-hidden">
             {/* Outer Ring */}
-            <div className="relative w-[320px] h-[320px] rounded-full border border-[#C778DD66]">
+            <div className="relative w-[300px] h-[300px] rounded-full border border-[#C778DD66]">
                 <div
                     ref={outerRef}
                     className="absolute inset-0 mx-auto my-auto w-full h-full"
                 >
-                    {createOrbitIcons(outerSkills, 155)}
+                    {createOrbitIcons(outerSkills, 150)}
                 </div>
 
                 {/* Inner Ring */}

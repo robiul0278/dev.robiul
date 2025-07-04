@@ -3,7 +3,7 @@
 import { useForm } from 'react-hook-form';
 
 import { useCreateProjectMutation } from '@/redux/api/api';
-import CreateProjectForm from '@/components/dashboard/create-project-form';
+import CreateProjectForm from '@/components/dashboard/project-form';
 import { toast } from 'sonner';
 import { TGenericErrorResponse, TProjectForm } from '@/types/types';
 import { Form } from '@/components/ui/form';

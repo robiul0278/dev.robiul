@@ -4,32 +4,28 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const baseApi = createApi({
   reducerPath: 'baseApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/api/v1' }),
-  tagTypes: ["auth"],
+  tagTypes: ["project"],
   endpoints: (builder) => ({
     createProject: builder.mutation({
       query: (data) => {
-        // console.log(data);
         return {
           url: `/project/create`,
           method: "POST",
           body: data
         }
       },
-       invalidatesTags: ["auth"]
+       invalidatesTags: ["project"]
     }),
-    loginUser: builder.mutation({
-      query: (data) => {
-        // console.log(data);
+    getAllProject: builder.query({
+      query: () => {
         return {
-          url: `/auth/login`,
-          method: "POST",
-          body: data
+          url: `/project`,
+          method: "GET",
         }
       },
-       invalidatesTags: ["auth"]
     }),
   }),
 });
 
 
-export const { useLoginUserMutation, useCreateProjectMutation } = baseApi;
+export const { useGetAllProjectQuery, useCreateProjectMutation } = baseApi;

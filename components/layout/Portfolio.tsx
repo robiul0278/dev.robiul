@@ -7,55 +7,19 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, Github } from 'lucide-react';
 import Image from 'next/image';
+import { TProjectForm } from '@/types/types';
+import { useGetAllProjectQuery } from '@/redux/api/api';
+import Loader from '../shared/Loader';
+import ErrorMessage from '../shared/ErrorMessage';
+import NoData from '../shared/NoData';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const projects = [
-  {
-    title: "E-Commerce Platform",
-    description: "Modern e-commerce solution with advanced features and seamless user experience.",
-    image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["React", "Node.js", "MongoDB", "Stripe"],
-    color: "from-blue-500 to-cyan-500"
-  },
-  {
-    title: "Healthcare Dashboard",
-    description: "Comprehensive healthcare management system with real-time analytics.",
-    image: "https://images.pexels.com/photos/7089020/pexels-photo-7089020.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["Vue.js", "Python", "PostgreSQL", "D3.js"],
-    color: "from-emerald-500 to-teal-500"
-  },
-  {
-    title: "Financial App",
-    description: "Secure financial management application with advanced reporting features.",
-    image: "https://images.pexels.com/photos/6801874/pexels-photo-6801874.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["React Native", "Express", "MySQL", "Chart.js"],
-    color: "from-purple-500 to-pink-500"
-  },
-  {
-    title: "Social Media Platform",
-    description: "Next-generation social networking platform with real-time messaging.",
-    image: "https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["Next.js", "GraphQL", "Redis", "WebSocket"],
-    color: "from-orange-500 to-red-500"
-  },
-  {
-    title: "Learning Management System",
-    description: "Comprehensive LMS with interactive content and progress tracking.",
-    image: "https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["Angular", "Django", "PostgreSQL", "WebRTC"],
-    color: "from-indigo-500 to-blue-500"
-  },
-  {
-    title: "IoT Dashboard",
-    description: "Real-time IoT device monitoring and control dashboard.",
-    image: "https://images.pexels.com/photos/8566473/pexels-photo-8566473.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["React", "MQTT", "InfluxDB", "Grafana"],
-    color: "from-green-500 to-emerald-500"
-  }
-];
-
 const Portfolio = () => {
+  const {data:projects,isLoading,isError,error,refetch}=useGetAllProjectQuery(undefined);
+
+console.log(projects);
+
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -63,12 +27,12 @@ const Portfolio = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Title animation
-    gsap.from(titleRef.current, {
-      x: -100,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out",
-    });
+      gsap.from(titleRef.current, {
+        x: -100,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+      });
 
       // Project cards animation
       gsap.fromTo('.project-card',
@@ -117,96 +81,105 @@ const Portfolio = () => {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [projects]);
+
+
+  if (isLoading) return <Loader />;
+ if (isError) return <ErrorMessage error={error} onRetry={() => refetch()} />;
+ if (!projects?.data || projects.data.length === 0) {
+  return <NoData onRetry={() => refetch()} />;
+}
+
+
 
   return (
-<section
-  id="projects"
-  ref={sectionRef}
-  className="relative py-16 bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 text-gray-900 dark:text-white overflow-hidden"
->
-  <div className="max-w-7xl mx-auto">
-    {/* Title */}
-    <div className="text-center mb-5 md:mb-16 lg:mb-16">
-      <h2
-        ref={titleRef}
-        className="text-2xl md:text-4xl lg:text-4xl font-bold md:mb-6 lg:mb-6"
-      >
-        My <span className="text-gray-500 dark:text-gray-400">Portfolio</span>
-      </h2>
-      <p className="text-lg md:text-xl text-gray-700 dark:text-slate-300 max-w-2xl mx-auto">
-        Showcasing my latest projects and details!
-      </p>
-    </div>
-
-    <div
-      ref={gridRef}
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-4 md:p-0 lg:p-0"
+    <section
+      id="projects"
+      ref={sectionRef}
+      className="relative py-16 bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 text-gray-900 dark:text-white overflow-hidden"
     >
-      {projects.map((project, index) => (
-        <Card
-          key={index}
-          className="project-card group relative overflow-hidden border border-gray-200 dark:border-0 shadow pb-5 pt-0 bg-gray-50 dark:bg-slate-800"
+      <div className="max-w-7xl mx-auto">
+        {/* Title */}
+        <div className="text-center mb-5 md:mb-16 lg:mb-16">
+          <h2
+            ref={titleRef}
+            className="text-2xl md:text-4xl lg:text-4xl font-bold md:mb-6 lg:mb-6"
+          >
+            My <span className="text-gray-500 dark:text-gray-400">Portfolio</span>
+          </h2>
+          <p className="text-lg md:text-xl text-gray-700 dark:text-slate-300 max-w-2xl mx-auto">
+            Showcasing my latest projects and details!
+          </p>
+        </div>
+
+        <div
+          ref={gridRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-4 md:p-0 lg:p-0"
         >
-          <div className="relative h-74 rounded-2xl overflow-hidden">
-            <Image
-              width={300}
-              height={300}
-              src={project.image}
-              alt={project.title}
-              className="project-image w-full h-full object-cover transition-transform duration-700"
-            />
+          {projects?.data.map((project: TProjectForm, index: string) => (
+            <Card
+              key={index}
+              className="project-card group relative overflow-hidden border border-gray-200 dark:border-0 shadow pb-5 pt-0 bg-gray-50 dark:bg-slate-800"
+            >
+              <div className="relative h-74 rounded-2xl overflow-hidden">
+                <Image
+                  width={300}
+                  height={300}
+                  src={project.image}
+                  alt={project.title}
+                  className="project-image w-full h-full object-cover transition-transform duration-700"
+                />
 
-            {/* Overlay */}
-            <div
-              className={`project-overlay absolute inset-0 bg-gradient-to-br ${project.color} opacity-70 transition-opacity duration-300`}
-            />
+                {/* Overlay */}
+                <div
+                  className={`project-overlay absolute inset-0 bg-gradient-to-br ${project.color} opacity-70 transition-opacity duration-300`}
+                />
 
-            {/* Content */}
-            <div className="project-content absolute inset-0 p-6 flex flex-col justify-end transform translate-y-5 opacity-90 transition-all duration-400">
-              <h3 className="text-xl font-bold mb-2 text-white dark:text-white">
-                {project.title}
-              </h3>
-              <p className="text-sm mb-4 text-white/90 dark:text-white/80">
-                {project.description}
-              </p>
+                {/* Content */}
+                <div className="project-content absolute inset-0 p-6 flex flex-col justify-end transform translate-y-5 opacity-90 transition-all duration-400">
+                  <h3 className="text-xl font-bold mb-2 text-white dark:text-white">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm mb-4 text-white/90 dark:text-white/80">
+                    {project.subTitle}
+                  </p>
 
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag, idx) => (
-                  <span
-                    key={idx}
-                    className="px-2 py-1 bg-white/20 dark:bg-white/20 rounded-lg text-xs font-medium backdrop-blur-sm text-white"
-                  >
-                    {tag}
-                  </span>
-                ))}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technology.map((tag, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2 py-1 bg-white/20 dark:bg-white/20 rounded-lg text-xs font-medium backdrop-blur-sm text-white"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex gap-3 mb-2">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="border-white/40 bg-white/10 dark:bg-transparent text-white hover:bg-white/20 cursor-pointer"
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      View
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="border-white/40 bg-white/10 dark:bg-transparent text-white hover:bg-white/20 cursor-pointer"
+                    >
+                      <Github className="w-4 h-4 mr-2" />
+                      Code
+                    </Button>
+                  </div>
+                </div>
               </div>
-
-              <div className="flex gap-3 mb-2">
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="border-white/40 bg-white/10 dark:bg-transparent text-white hover:bg-white/20 cursor-pointer"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  View
-                </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="border-white/40 bg-white/10 dark:bg-transparent text-white hover:bg-white/20 cursor-pointer"
-                >
-                  <Github className="w-4 h-4 mr-2" />
-                  Code
-                </Button>
-              </div>
-            </div>
-          </div>
-        </Card>
-      ))}
-    </div>
-  </div>
-</section>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
 
   );
 }
