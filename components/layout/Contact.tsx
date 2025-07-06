@@ -132,6 +132,14 @@ const Contact = () => {
       id="contact"
       className="relative py-16 bg-white text-gray-900 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 dark:text-white overflow-hidden transition-colors duration-500"
     >
+      {/* Background Blobs */}
+      <div className="absolute inset-0">
+        {/* Dark Mode Blobs */}
+        <div className="hidden dark:block">
+          <div className="absolute top-1/3 left-1/4 w-[600px] h-[500px] bg-gradient-to-tr from-green-700/10 via-cyan-700/10 to-blue-700/10 rounded-full blur-3xl" />
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-5 lg:px-0">
         <div ref={contentRef} className="space-y-8">
           <div
@@ -229,7 +237,7 @@ const Contact = () => {
             {/* Left Info */}
             <div className="flex items-center justify-center w-full h-full">
               <div className="space-y-5 text-gray-700 dark:text-white transition-colors duration-500 text-base leading-relaxed info text-center max-w-md">
-                <p className="font-semibold text-gray-900 dark:text-pink-500 transition-colors duration-500">Who am I?</p>
+                <p className="font-semibold text-blue-500 transition-colors duration-500">Who am I?</p>
                 <p>
                   I’m interested in freelance opportunities. However, if you have other requests
                   or questions, don’t hesitate to contact me.

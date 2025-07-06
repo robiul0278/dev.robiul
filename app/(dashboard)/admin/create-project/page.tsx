@@ -20,7 +20,7 @@ const form = useForm<TProjectForm>({
     backend: '',
     image: '',
     technology: [],
-    color: 'from-indigo-500 to-blue-500',
+    color: '',
     serial: '', // or 0 if number
   },
 });

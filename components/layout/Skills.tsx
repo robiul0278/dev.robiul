@@ -89,6 +89,25 @@ const Skills = () => {
       id="skills"
       className="relative py-14 bg-white dark:bg-transparent text-gray-900 dark:text-white"
     >
+
+        {/* Background Blobs */}
+  <div className="absolute inset-0">
+    {/* Dark Mode Blobs */}
+    <div className="hidden dark:block">
+      {/* <div className="absolute top-16 left-16 w-80 h-80 bg-cyan-600/20 rounded-full blur-3xl" /> */}
+      {/* <div className="absolute bottom-24 right-24 w-96 h-96 bg-green-700/20 rounded-full blur-3xl" /> */}
+      {/* <div className="absolute top-1/3 left-1/4 w-[600px] h-[500px] bg-gradient-to-tr from-green-700/10 via-cyan-700/10 to-blue-700/10 rounded-full blur-3xl" /> */}
+      <div className="absolute bottom-1/4 right-1/3 w-64 h-64 bg-purple-700/20 rounded-full blur-3xl" />
+    </div>
+
+    {/* Light Mode Blobs */}
+    <div className="block dark:hidden">
+      {/* <div className="absolute top-20 left-20 w-72 h-72 bg-pink-300/30 rounded-full blur-3xl" /> */}
+      {/* <div className="absolute bottom-20 right-20 w-96 h-96 bg-indigo-300/30 rounded-full blur-3xl" /> */}
+      <div className="absolute top-1/2 left-1/2 w-[800px] h-[600px] bg-gradient-to-br from-blue-200/30 via-blue-200/30 to-blue-200/30 rounded-full blur-3xl" />
+      {/* <div className="absolute bottom-32 right-1/4 w-64 h-64 bg-yellow-300/30 rounded-full blur-3xl" /> */}
+    </div>
+  </div>
       <div className="max-w-7xl mx-auto relative p-5 lg:p-0">
         {/* Title */}
         <div

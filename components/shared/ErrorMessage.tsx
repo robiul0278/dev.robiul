@@ -36,20 +36,21 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({ error, onRetry }) => {
   }
 
   return (
-    <section className="py-20 px-4 flex justify-center items-center text-center">
+    <div className="py-20 px-4 flex justify-center items-center text-center">
       <div className="max-w-md space-y-6">
-        <div className="inline-flex items-center gap-3 text-red-600 dark:text-red-400">
+        <div className="inline-flex items-center gap-3 text-destructive">
           <AlertTriangle className="w-6 h-6" />
           <span className="text-xl font-bold">Error {statusCode}</span>
         </div>
-        <p className="text-base text-gray-700 dark:text-gray-300">
+
+        <p className="text-base text-muted-foreground">
           {message}
         </p>
 
         {onRetry && (
           <Button
             variant="outline"
-            className="inline-flex items-center gap-2 border-red-500 text-red-600 hover:bg-red-100 dark:hover:bg-red-900 cursor-pointer"
+            className="gap-2 border-destructive text-destructive hover:bg-destructive/10 dark:hover:bg-destructive/20"
             onClick={onRetry}
           >
             <RotateCcw className="w-4 h-4" />
@@ -57,7 +58,7 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({ error, onRetry }) => {
           </Button>
         )}
       </div>
-    </section>
+    </div>
   );
 };
 

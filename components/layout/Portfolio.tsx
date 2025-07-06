@@ -16,9 +16,9 @@ import NoData from '../shared/NoData';
 gsap.registerPlugin(ScrollTrigger);
 
 const Portfolio = () => {
-  const {data:projects,isLoading,isError,error,refetch}=useGetAllProjectQuery(undefined);
+  const { data: projects, isLoading, isError, error, refetch } = useGetAllProjectQuery(undefined);
 
-console.log(projects);
+  console.log(projects);
 
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -85,10 +85,10 @@ console.log(projects);
 
 
   if (isLoading) return <Loader />;
- if (isError) return <ErrorMessage error={error} onRetry={() => refetch()} />;
- if (!projects?.data || projects.data.length === 0) {
-  return <NoData onRetry={() => refetch()} />;
-}
+  if (isError) return <ErrorMessage error={error} onRetry={() => refetch()} />;
+  if (!projects?.data || projects.data.length === 0) {
+    return <NoData onRetry={() => refetch()} />;
+  }
 
 
 
@@ -118,64 +118,61 @@ console.log(projects);
         >
           {projects?.data.map((project: TProjectForm, index: string) => (
             <Card
-              key={index}
-              className="project-card group relative overflow-hidden border border-gray-200 dark:border-0 shadow pb-5 pt-0 bg-gray-50 dark:bg-slate-800"
+             key={index}
+  className="project-card group relative w-full max-w-md mx-auto overflow-hidden rounded-xl shadow-sm transition-shadow hover:shadow-md dark:bg-slate-900"
             >
-              <div className="relative h-74 rounded-2xl overflow-hidden">
+              {/* Image */}
+              <div className="relative h-48 sm:h-56 overflow-hidden rounded-t-xl">
                 <Image
-                  width={300}
-                  height={300}
                   src={project.image}
                   alt={project.title}
-                  className="project-image w-full h-full object-cover transition-transform duration-700"
+                  width={400}
+                  height={300}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  priority
                 />
+              </div>
 
-                {/* Overlay */}
-                <div
-                  className={`project-overlay absolute inset-0 bg-gradient-to-br ${project.color} opacity-70 transition-opacity duration-300`}
-                />
-
-                {/* Content */}
-                <div className="project-content absolute inset-0 p-6 flex flex-col justify-end transform translate-y-5 opacity-90 transition-all duration-400">
-                  <h3 className="text-xl font-bold mb-2 text-white dark:text-white">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm mb-4 text-white/90 dark:text-white/80">
-                    {project.subTitle}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technology.map((tag, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2 py-1 bg-white/20 dark:bg-white/20 rounded-lg text-xs font-medium backdrop-blur-sm text-white"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex gap-3 mb-2">
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="border-white/40 bg-white/10 dark:bg-transparent text-white hover:bg-white/20 cursor-pointer"
+              {/* Content */}
+              <div className="px-5 space-y-2">
+                {/* Title */}
+                <h3 className="text-lg font-bold text-foreground truncate">
+                  {project.title}
+                </h3>
+                {/* Subtitle */}
+                <span className="block text-xs text-primary font-semibold tracking-widest">
+                  {project.subTitle}
+                </span>
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {project.technology.map((tag, idx) => (
+                    <span
+                      key={idx}
+                      className="px-3 py-1 text-xs rounded-md bg-muted text-foreground/80"
                     >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      View
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="border-white/40 bg-white/10 dark:bg-transparent text-white hover:bg-white/20 cursor-pointer"
-                    >
-                      <Github className="w-4 h-4 mr-2" />
-                      Code
-                    </Button>
-                  </div>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Buttons */}
+                <div className="flex gap-3 pt-4">
+                  <Button size="sm" variant="outline" className="flex items-center px-4 h-9 text-xs">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    View
+                  </Button>
+                  <Button size="sm" variant="outline" className="flex items-center px-4 h-9 text-xs">
+                    <Github className="w-4 h-4 mr-2" />
+                    Code
+                  </Button>
+                  <Button size="sm" variant="outline" className="flex items-center px-4 h-9 text-xs">
+                    <Github className="w-4 h-4 mr-2" />
+                    Code
+                  </Button>
                 </div>
               </div>
             </Card>
+
           ))}
         </div>
       </div>

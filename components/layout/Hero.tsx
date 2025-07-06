@@ -145,10 +145,8 @@ const Hero = () => {
 
     {/* Light Mode Blobs */}
     <div className="block dark:hidden">
-      <div className="absolute top-20 left-20 w-72 h-72 bg-pink-300/30 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-20 w-96 h-96 bg-indigo-300/30 rounded-full blur-3xl" />
-      <div className="absolute top-1/2 left-1/2 w-[800px] h-[600px] bg-gradient-to-br from-pink-200/30 via-rose-200/30 to-indigo-200/30 rounded-full blur-3xl" />
-      <div className="absolute bottom-32 right-1/4 w-64 h-64 bg-yellow-300/30 rounded-full blur-3xl" />
+      <div className="absolute top-22 left-20 w-96 h-96 bg-blue-300/50 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-20 w-96 h-96 bg-green-300/30 rounded-full blur-3xl" />
     </div>
   </div>
 
@@ -211,11 +209,10 @@ const Hero = () => {
       ref={titleRef}
       className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 leading-tight"
     >
-      <span className="text-gray-900 dark:text-cyan-400 transition-colors duration-500">MERN</span>
+      <span className="text-green-500 dark:text-cyan-400 transition-colors duration-500">MERN</span>
       <br />
-      <span className="text-gray-700 dark:text-green-300 transition-colors duration-500">Full Stack Developer</span>
+      <span className="text-cyan-700 dark:text-green-300 transition-colors duration-500">Full Stack Developer</span>
     </h1>
-
     <p
       ref={subtitleRef}
       className="text-lg md:text-xl lg:text-2xl text-gray-700 dark:text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed"
