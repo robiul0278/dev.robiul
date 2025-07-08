@@ -35,8 +35,27 @@ export const baseApi = createApi({
       },
       invalidatesTags: ["project"]
     }),
+    getSingleProject: builder.query({
+      query: (id) => {
+        return {
+          url: `/project/single/${id}`,
+          method: "GET",
+        }
+      },
+      providesTags: ["project"]
+    }),
+    updateProject: builder.mutation({
+      query: (data) => {
+        return {
+          url: `/project/update/${data._id}`,
+          method: "PATCH",
+          body: data,
+        };
+      },
+      invalidatesTags: ["project"],
+    }),
+
   }),
 });
 
-
-export const { useGetAllProjectQuery, useCreateProjectMutation, useDeleteProjectMutation } = baseApi;
+export const { useGetAllProjectQuery, useCreateProjectMutation, useDeleteProjectMutation, useGetSingleProjectQuery, useUpdateProjectMutation } = baseApi;

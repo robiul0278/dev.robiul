@@ -1,20 +1,28 @@
 'use client';
 
 import { useForm } from 'react-hook-form';
-
-import { useCreateProjectMutation } from '@/redux/api/api';
-import CreateProjectForm from '@/components/dashboard/create-form';
+import { useGetSingleProjectQuery, useUpdateProjectMutation } from '@/redux/api/api';
 import { toast } from 'sonner';
 import { TGenericErrorResponse, TProjectForm } from '@/types/types';
 import { Form } from '@/components/ui/form';
 import { useRouter } from 'next/navigation';
+import UpdateForm from '@/components/dashboard/update-form';
+import { Loader2 } from 'lucide-react';
+import ErrorMessage from '@/components/shared/ErrorMessage';
+import { use } from 'react';
 
-export default function CreateProject() {
-  const [createProject] = useCreateProjectMutation();
+type PageProps = {
+  params: Promise<{ id: string }>;
+};
+
+export default function UpdateProject({ params }: PageProps) {
   const router = useRouter()
+   const { id } = use(params);
+  const {data: singleData, isLoading, isError, error} = useGetSingleProjectQuery(id);
+  const [Update] = useUpdateProjectMutation();
 
 const form = useForm<TProjectForm>({
-  defaultValues: {
+  values: singleData?.data || {
     title: '',
     subTitle: '',
     liveLink: '',
@@ -22,19 +30,18 @@ const form = useForm<TProjectForm>({
     backend: '',
     image: '',
     technology: [],
-    serial: '', // or 0 if number
+    serial: '',
   },
 });
 
-
   const onSubmit = async (data: TProjectForm) => {
     try {
-      const result = await createProject(data).unwrap();
+      const result = await Update(data).unwrap();
       if (result?.statusCode === 200) {
         toast.success(`${result?.message}`);
         router.push("/admin/all-project")
       } else {
-        toast.error('⚠️ Project creation failed. Please try again.');
+        toast.error('⚠️ Project update failed. Please try again.');
       }
 
       console.log('✅ Server response:', result);
@@ -57,11 +64,22 @@ const form = useForm<TProjectForm>({
     }
   };
 
+   if (isLoading) {
+  return (
+    <div className="flex justify-center items-center min-h-screen">
+      <Loader2 className="animate-spin w-8 h-8 text-muted-foreground" />
+    </div>
+  );
+}
+
+  if (isError) return <ErrorMessage error={error}  />;
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Add a New Project</h1>
+          <h1 className="text-3xl font-bold text-foreground">Update Project</h1>
+
           <p className="text-sm mt-1 text-muted-foreground">
             Provide the project title, subtitle, tech stack, and important links
           </p>
@@ -75,7 +93,7 @@ const form = useForm<TProjectForm>({
       </div>
 
       <Form {...form}>
-        <CreateProjectForm
+        <UpdateForm
           onSubmit={onSubmit}
           register={form.register}
           handleSubmit={form.handleSubmit}

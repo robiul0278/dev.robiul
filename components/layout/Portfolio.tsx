@@ -114,7 +114,7 @@ const Portfolio = () => {
 
         <div
           ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 px-4 md:p-0 lg:p-0"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 px-4 md:p-0 lg:p-0"
         >
           {projects?.data.map((project: TProjectForm, index: string) => (
             <Card
@@ -140,7 +140,7 @@ const Portfolio = () => {
                     {project.title}
                   </CardTitle>
                   <span className="block text-xs text-primary font-semibold tracking-wide">
-                    {project.subTitle}
+                    {project.subTitle.slice(0, 80)}{project.subTitle.length > 80 ? "..." : ""}
                   </span>
                 </CardHeader>
                 {/* Tags */}
@@ -148,34 +148,34 @@ const Portfolio = () => {
                   {project.technology.map((tag, idx) => (
                     <span
                       key={idx}
-                      className="px-2 py-1 text-xs rounded bg-muted text-foreground/80"
+                      className="px-1 py-1 text-xs rounded bg-muted text-foreground/80"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                  {/* Buttons */}
-                  <CardFooter className="flex gap-2 justify-between p-0">
-                    <Button size="sm" variant="outline" className="flex items-center text-xs cursor-pointer"
-                       onClick={() => window.open(`${project.liveLink}`, "_blank")}
-                    >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      live
-                    </Button>
-                    <Button size="sm" variant="outline" className="flex items-center text-xs cursor-pointer"
-                      onClick={() => window.open(`${project.frontend}`, "_blank")}
-                    >
-                      <Github className="w-4 h-4 mr-2" />
-                      Frontend
-                    </Button>
-                    <Button size="sm" variant="outline" className="flex items-center text-xs cursor-pointer"
-                      onClick={() => window.open(`${project.backend}`, "_blank")}
-                    >
-                      <Github className="w-4 h-4 mr-2" />
-                      Backend
-                    </Button>
-                  </CardFooter>
+                {/* Buttons */}
+                <CardFooter className="flex gap-2 justify-between p-0">
+                  <Button size="sm" variant="outline" className="flex items-center text-xs cursor-pointer"
+                    onClick={() => window.open(`${project.liveLink}`, "_blank")}
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    live
+                  </Button>
+                  <Button size="sm" variant="outline" className="flex items-center text-xs cursor-pointer"
+                    onClick={() => window.open(`${project.frontend}`, "_blank")}
+                  >
+                    <Github className="w-4 h-4" />
+                    Frontend
+                  </Button>
+                  <Button size="sm" variant="outline" className="flex items-center text-xs cursor-pointer"
+                    onClick={() => window.open(`${project.backend}`, "_blank")}
+                  >
+                    <Github className="w-4 h-4" />
+                    Backend
+                  </Button>
+                </CardFooter>
               </CardContent>
             </Card>
 

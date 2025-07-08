@@ -26,8 +26,8 @@ export default function ProjectDashboard() {
 
 
     const handleEdit = (id: string) => {
-        if (confirm('Are you sure you want to delete this project?')) {
-            router.push(`/admin/projects/edit/${id}`);
+        if (confirm('You want to edit this project?')) {
+            router.push(`/admin/update/${id}`);
         }
     };
 
