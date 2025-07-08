@@ -1,41 +1,55 @@
-// components/shared/Loader.tsx
+"use client";
 
-import React from "react";
-import { Card } from "@/components/ui/card";
-
-const SkeletonCard = () => (
-  <Card className="project-card relative overflow-hidden border border-gray-200 dark:border-0 shadow pb-5 pt-20  animate-pulse">
-
-    <div className="p-6 flex flex-col justify-end space-y-4">
-      <div className="h-5 w-2/3 bg-gray-300 dark:bg-slate-600 rounded" />
-      <div className="h-4 w-1/2 bg-gray-300 dark:bg-slate-600 rounded" />
-
-      {/* Tags */}
-      <div className="flex flex-wrap gap-2">
-        {Array.from({ length: 3 }).map((_, idx) => (
-          <div
-            key={idx}
-            className="h-5 w-12 bg-gray-300 dark:bg-slate-600 rounded-lg"
-          />
-        ))}
-      </div>
-
-      {/* Buttons */}
-      <div className="flex gap-3">
-        <div className="h-8 w-20 bg-gray-300 dark:bg-slate-600 rounded" />
-        <div className="h-8 w-20 bg-gray-300 dark:bg-slate-600 rounded" />
-      </div>
-    </div>
-  </Card>
-);
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Loader = () => {
+  const cards = new Array(4).fill(0); // Display 4 skeleton cards
+
   return (
-    <section className="py-16 bg-white dark:bg-slate-800">
-      <div className="max-w-7xl mx-auto px-4 lg:p-0 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-5">
-        {Array.from({ length: 4 }).map((_, idx) => (
-          <SkeletonCard key={idx} />
-        ))}
+    <section className="py-16 relative bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 text-gray-900 dark:text-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 md:px-0">
+        {/* Title Skeleton */}
+        <div className="text-center mb-5 md:mb-16 lg:mb-10">
+          <Skeleton className="h-8 md:h-10 w-64 mx-auto mb-2" />
+          <Skeleton className="h-5 w-80 md:w-96 mx-auto" />
+        </div>
+
+        {/* Grid Skeleton */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {cards.map((_, index) => (
+            <Card
+              key={index}
+              className="w-full max-w-md mx-auto overflow-hidden rounded-xl shadow-sm dark:bg-slate-900"
+            >
+              {/* Image Skeleton */}
+              <div className="h-48 sm:h-56 w-full overflow-hidden rounded-t-xl">
+                <Skeleton className="h-full w-full" />
+              </div>
+
+              <CardContent className="px-3 space-y-3 pt-4">
+                <CardHeader className="p-0 space-y-2">
+                  <Skeleton className="h-5 w-3/4" />
+                  <Skeleton className="h-4 w-1/2" />
+                </CardHeader>
+
+                {/* Tags Skeleton */}
+                <div className="flex flex-wrap gap-2 mt-2">
+                  <Skeleton className="h-5 w-14 rounded" />
+                  <Skeleton className="h-5 w-10 rounded" />
+                  <Skeleton className="h-5 w-16 rounded" />
+                </div>
+              </CardContent>
+
+              {/* Footer Buttons Skeleton */}
+              <CardFooter className="flex justify-between gap-2 p-3 pt-0">
+                <Skeleton className="h-8 w-20 rounded-md" />
+                <Skeleton className="h-8 w-24 rounded-md" />
+                <Skeleton className="h-8 w-24 rounded-md" />
+              </CardFooter>
+            </Card>
+          ))}
+        </div>
       </div>
     </section>
   );
