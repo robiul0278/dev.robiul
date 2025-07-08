@@ -96,14 +96,14 @@ const Portfolio = () => {
     <section
       id="projects"
       ref={sectionRef}
-      className="relative py-16 bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 text-gray-900 dark:text-white overflow-hidden"
+      className="py-16 relative bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 text-gray-900 dark:text-white overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         {/* Title */}
-        <div className="text-center mb-5 md:mb-16 lg:mb-16">
+        <div className="text-center mb-5 md:mb-16 lg:mb-10">
           <h2
             ref={titleRef}
-            className="text-2xl md:text-4xl lg:text-4xl font-bold md:mb-6 lg:mb-6"
+            className="text-2xl md:text-4xl lg:text-4xl font-bold md:mb-2"
           >
             My <span className="text-gray-500 dark:text-gray-400">Portfolio</span>
           </h2>

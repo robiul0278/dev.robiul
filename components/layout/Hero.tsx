@@ -1,252 +1,221 @@
-"use client";
+"use client"
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect } from 'react'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 import {
+  Github,
+  Linkedin,
+  Twitter,
+  Mail,
+  Download,
   ArrowRight,
-  Database,
-  Terminal,
-} from "lucide-react";
+  MapPin,
+  Code,
+  Zap
+} from 'lucide-react'
+import Image from 'next/image'
+import { FaJs } from 'react-icons/fa'
+import { SiNextdotjs } from 'react-icons/si'
 
-import {
-  SiJavascript,
-  SiTypescript,
-  SiNextdotjs,
-  SiReact,
-  SiTailwindcss,
-  SiAxios,
-  SiFramer,
-  SiFirebase,
-  SiNodedotjs,
-  SiExpress,
-  SiMongodb,
-  SiFigma,
-  SiGit,
-} from "react-icons/si";
-
-const Hero = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const buttonsRef = useRef<HTMLDivElement>(null);
-  const floatingRef = useRef<HTMLDivElement>(null);
-
-    const handleNavClick = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+export default function Hero() {
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.set([titleRef.current, subtitleRef.current, buttonsRef.current], {
-        opacity: 0,
-        y: 50,
-      });
+    setIsLoaded(true)
 
-      gsap.set(".floating-element", {
-        opacity: 0,
-        scale: 0,
-      });
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
 
-      const tl = gsap.timeline({ delay: 0.2 });
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
 
-      tl.to(titleRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-      })
-        .to(
-          subtitleRef.current,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power3.out",
-          },
-          "-=0.6"
-        )
-        .to(
-          buttonsRef.current,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power3.out",
-          },
-          "-=0.4"
-        )
-        .to(
-          ".floating-element",
-          {
-            opacity: 1,
-            scale: 1,
-            duration: 0.6,
-            stagger: 0.2,
-            ease: "back.out(1.7)",
-          },
-          "-=0.6"
-        );
+  const skills = [
+    { name: 'React', icon: Code },
+    { name: 'TypeScript', icon: Code },
+    { name: 'Next.js', icon: Zap },
+    { name: 'Node.js', icon: Code },
+    { name: 'MongoDB', icon: Code }
+  ]
 
-      gsap.to(".floating-1", {
-        y: -20,
-        duration: 3,
-        ease: "power1.inOut",
-        yoyo: true,
-        repeat: -1,
-      });
-
-      gsap.to(".floating-2", {
-        y: -15,
-        x: 10,
-        duration: 4,
-        ease: "power1.inOut",
-        yoyo: true,
-        repeat: -1,
-        delay: 1,
-      });
-
-      gsap.to(".floating-3", {
-        y: -25,
-        x: -5,
-        duration: 3.5,
-        ease: "power1.inOut",
-        yoyo: true,
-        repeat: -1,
-        delay: 2,
-      });
-    }, heroRef);
-
-    return () => ctx.revert();
-  }, []);
+  const socialLinks = [
+    { icon: Github, href: '#', label: 'GitHub' },
+    { icon: Linkedin, href: '#', label: 'LinkedIn' },
+    { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: Mail, href: '#', label: 'Email' }
+  ]
 
   return (
-<section
-  ref={heroRef}
-  className={`
-    relative min-h-screen flex items-center justify-center overflow-hidden
-    bg-white
-    dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-slate-900
-    transition-colors duration-500
-  `}
->
-  {/* Background Blobs */}
-  <div className="absolute inset-0">
-    {/* Dark Mode Blobs */}
-    <div className="hidden dark:block">
-      <div className="absolute top-16 left-16 w-80 h-80 bg-cyan-600/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-24 right-24 w-96 h-96 bg-green-700/20 rounded-full blur-3xl" />
-      <div className="absolute top-1/3 left-1/4 w-[600px] h-[500px] bg-gradient-to-tr from-green-700/10 via-cyan-700/10 to-blue-700/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/3 w-64 h-64 bg-purple-700/20 rounded-full blur-3xl" />
-    </div>
+    <div className="min-h-screen flex items-center justify-cente bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div
+          className="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse"
+          style={{
+            transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`
+          }}
+        />
+        <div
+          className="absolute bottom-1/4 right-1/5 w-96 h-96 bg-gradient-to-r from-pink-400/20 to-orange-400/20 rounded-full blur-3xl animate-pulse"
+          style={{
+            transform: `translate(${-mousePosition.x * 0.01}px, ${-mousePosition.y * 0.01}px)`
+          }}
+        />
+      </div>
 
-    {/* Light Mode Blobs */}
-    <div className="block dark:hidden">
-      <div className="absolute top-22 left-20 w-96 h-96 bg-blue-300/50 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-20 w-96 h-96 bg-green-300/30 rounded-full blur-3xl" />
-    </div>
-  </div>
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px'
+        }} />
+      </div>
 
-  {/* Floating Tech Icons */}
-  <div ref={floatingRef} className="absolute inset-0 pointer-events-none">
-    {/* Dark Mode Icons */}
-    <div className="hidden dark:flex absolute top-1/4 left-1/4 glass rounded-2xl p-4 text-cyan-400">
-      <SiJavascript className="w-8 h-8" />
-    </div>
-    <div className="hidden dark:flex absolute top-1/3 right-1/4 glass rounded-2xl p-4 text-green-400">
-      <SiReact className="w-8 h-8" />
-    </div>
-    <div className="hidden dark:flex absolute bottom-1/4 left-1/3 glass rounded-2xl p-4 text-blue-400">
-      <SiNextdotjs className="w-8 h-8" />
-    </div>
-    <div className="hidden dark:flex absolute bottom-1/3 right-1/3 glass rounded-2xl p-4 text-purple-400">
-      <SiTailwindcss className="w-8 h-8" />
-    </div>
-    <div className="hidden dark:flex absolute top-1/2 left-1/5 glass rounded-2xl p-4 text-slate-200">
-      <SiTypescript className="w-8 h-8" />
-    </div>
+      <div className="relative z-10 container mx-auto px-4 py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-1">
+            {/* Left Content */}
+            <div className={`space-y-4 transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              {/* Status Badge */}
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <Badge variant="secondary" className="text-sm font-medium">
+                  Available for work
+                </Badge>
+              </div>
 
-    {/* Light Mode Icons */}
-    <div className="flex dark:hidden absolute top-1/4 left-1/4 glass rounded-2xl p-4 text-pink-500">
-      <SiNodedotjs className="w-8 h-8" />
-    </div>
-    <div className="flex dark:hidden absolute top-1/3 right-1/4 glass rounded-2xl p-4 text-indigo-500">
-      <SiExpress className="w-8 h-8" />
-    </div>
-    <div className="flex dark:hidden absolute bottom-1/4 left-1/3 glass rounded-2xl p-4 text-purple-500">
-      <SiMongodb className="w-8 h-8" />
-    </div>
-    <div className="flex dark:hidden absolute bottom-1/3 right-1/3 glass rounded-2xl p-4 text-sky-400">
-      <Terminal className="w-8 h-8" />
-    </div>
-    <div className="flex dark:hidden absolute top-1/2 left-1/5 glass rounded-2xl p-4 text-yellow-500">
-      <SiFigma className="w-8 h-8" />
-    </div>
-    {/* Extra light mode icons */}
-    <div className="flex dark:hidden absolute top-1/6 right-1/6 glass rounded-2xl p-4 text-rose-500">
-      <SiGit className="w-8 h-8" />
-    </div>
-    <div className="flex dark:hidden absolute bottom-1/6 left-1/6 glass rounded-2xl p-4 text-green-500">
-      <Database className="w-8 h-8" />
-    </div>
-    <div className="flex dark:hidden absolute bottom-1/8 right-1/8 glass rounded-2xl p-4 text-pink-600">
-      <SiFramer className="w-8 h-8" />
-    </div>
-    <div className="flex dark:hidden absolute top-1/4 right-1/3 glass rounded-2xl p-4 text-cyan-500">
-      <SiAxios className="w-8 h-8" />
-    </div>
-    <div className="flex dark:hidden absolute top-1/3 left-1/5 glass rounded-2xl p-4 text-yellow-400">
-      <SiFirebase className="w-8 h-8" />
-    </div>
-  </div>
+              {/* Main Heading */}
+              <div className="space-y-4">
+                <h1 className="text-5xl lg:text-4xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 dark:from-white dark:via-slate-200 dark:to-white bg-clip-text text-transparent leading-tight uppercase">
+                  Robiul Hasan
+                </h1>
+                <h2 className="text-2xl lg:text-2xl font-semibold text-slate-600 dark:text-slate-300">
+                  Full-Stack Developer
+                </h2>
+              </div>
 
-  {/* Main Content */}
-  <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-    <h1
-      ref={titleRef}
-      className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 leading-tight"
-    >
-      <span className="text-green-500 dark:text-cyan-400 transition-colors duration-500">MERN</span>
-      <br />
-      <span className="text-cyan-700 dark:text-green-300 transition-colors duration-500">Full Stack Developer</span>
-    </h1>
-    <p
-      ref={subtitleRef}
-      className="text-lg md:text-xl lg:text-2xl text-gray-700 dark:text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed"
-    >
-      Building modern, scalable web applications with MongoDB, Express, React, and Node.js.
-      Clean code. Pixel-perfect UI. Blazing performance.
-    </p>
+              {/* Description */}
+              <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-lg">
+                I love the world of technology, which inspired me to become a fullstack web developer. I dream of turning my passion into a successful profession.
+              </p>
 
-    <div
-      ref={buttonsRef}
-      className="flex flex-col sm:flex-row gap-6 justify-center items-center"
-    >
-      <Button
-        variant="outline"
-        size="lg"
-        className="glass border-gray-400 dark:border-cyan-400 text-gray-900 dark:text-cyan-300 px-8 py-4 text-lg font-semibold rounded-full bg-transparent hover:bg-gray-200 dark:hover:bg-cyan-600 transition-all duration-300 cursor-pointer"
-        onClick={() => handleNavClick('#contact')}
-      >
-        Hire Me
-        <ArrowRight className="w-5 h-5 ml-2" />
-      </Button>
+              {/* Location */}
+              <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+                <MapPin className="w-4 h-4" />
+                <span>Naogaon, Bangladesh</span>
+              </div>
+
+              {/* Skills */}
+              <div className="space-y-3">
+                <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
+                  Tech Stack
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {skills.map((skill, index) => (
+                    <Badge
+                      key={skill.name}
+                      variant="outline"
+                      className="px-3 py-1 text-sm hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                      style={{
+                        animationDelay: `${index * 0.1}s`
+                      }}
+                    >
+                      <skill.icon className="w-3 h-3 mr-1" />
+                      {skill.name}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap gap-4">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-slate-900 to-slate-700 hover:from-slate-800 hover:to-slate-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
+                onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  View My Work
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-slate-300 hover:bg-slate-50 dark:border-slate-600 dark:hover:bg-slate-800 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  onClick={() => window.open("https://drive.google.com/file/d/1CAFJ2bK8N8ChI_YL44ml4oo506l4ACaM/view?usp=drive_link", "_blank")}
+                >
+                  <Download className="mr-2 w-4 h-4" />
+                  Download CV
+                </Button>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex gap-4">
+                {socialLinks.map((social, index) => (
+                  <Button
+                    key={social.label}
+                    variant="ghost"
+                    size="icon"
+                    className="w-10 h-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 hover:scale-110 cursor-pointer"
+                    style={{
+                      animationDelay: `${index * 0.1}s`
+                    }}
+                  >
+                    <social.icon className="w-5 h-5" />
+                    <span className="sr-only">{social.label}</span>
+                  </Button>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Content - Profile Image */}
+            <div className={`relative justify-self-end transition-all duration-1000 delay-300 pt-10 pr-10 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <div className="relative mx-auto w-80 h-80 lg:w-96 lg:h-96">
+                {/* Animated Rings */}
+                <div className="absolute inset-0 rounded-full border-2 border-slate-200 dark:border-slate-700 animate-spin-slow opacity-20"></div>
+                <div className="absolute inset-4 rounded-full border-2 border-slate-300 dark:border-slate-600 animate-spin-slow opacity-30" style={{ animationDirection: 'reverse', animationDuration: '20s' }}></div>
+
+                {/* Profile Image Container */}
+                <div className="absolute inset-8 rounded-full bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 p-1 shadow-2xl">
+                  <div className="w-full h-full rounded-full bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center relative overflow-hidden">
+                    {/* Placeholder for profile image */}
+                    <Image
+                      src="/profile.jpg"
+                      alt=""
+                      width={300}
+                      height={300}
+                      className='object-cover rounded-full'
+                    />
+                    {/* <div className="w-32 h-32 bg-gradient-to-br from-slate-300 to-slate-400 dark:from-slate-600 dark:to-slate-500 rounded-full flex items-center justify-center">
+                      <span className="text-4xl font-bold text-slate-600 dark:text-slate-300">AJ</span>
+                    </div> */}
+                  </div>
+                </div>
+
+                {/* Floating Elements */}
+                <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg animate-bounce">
+                  <SiNextdotjs className="w-8 h-8 text-white" />
+                </div>
+                <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full flex items-center justify-center shadow-lg animate-bounce" style={{ animationDelay: '0.5s' }}>
+                  <FaJs className="w-8 h-8 text-white" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-slate-400 dark:border-slate-600 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-slate-400 dark:bg-slate-600 rounded-full mt-2 animate-pulse"></div>
+        </div>
+      </div>
     </div>
-  </div>
-
-  {/* Scroll Indicator */}
-  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-    <div className="w-6 h-10 border-2 border-gray-500 dark:border-cyan-400 rounded-full flex justify-center">
-      <div className="w-1 h-3 bg-gray-700 dark:bg-cyan-300 rounded-full mt-2 animate-pulse" />
-    </div>
-  </div>
-</section>
-
-  );
+  )
 }
-
-
-export default Hero;
