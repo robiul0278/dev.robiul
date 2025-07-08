@@ -16,6 +16,7 @@ import { FieldErrors, UseFormRegister, UseFormHandleSubmit, UseFormSetValue, Use
 // Zod schema for validation
 
 export type TProjectForm = {
+  _id?: string;
   title: string;
   subTitle: string;
   image: string;
@@ -23,7 +24,6 @@ export type TProjectForm = {
   liveLink: string;
   frontend: string;
   backend: string;
-  color: string;
   serial: string;
 };
 

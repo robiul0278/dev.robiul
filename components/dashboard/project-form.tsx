@@ -159,20 +159,6 @@ const CreateProjectForm = ({ onSubmit, form }: TFormProps) => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Card Color */}
-              <FormField
-                control={form.control}
-                name="color"
-                render={({ field }) => (
-                  <FormItem>
-                    <Label htmlFor="color">Card Color</Label>
-                    <FormControl>
-                      <Input id="color" placeholder="from-orange-500 to-red-500" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
 
               {/* Serial No. */}
               <FormField

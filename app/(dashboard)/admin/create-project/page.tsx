@@ -7,9 +7,11 @@ import CreateProjectForm from '@/components/dashboard/project-form';
 import { toast } from 'sonner';
 import { TGenericErrorResponse, TProjectForm } from '@/types/types';
 import { Form } from '@/components/ui/form';
+// import { useRouter } from 'next/navigation';
 
 export default function CreateProject() {
   const [createProject] = useCreateProjectMutation();
+  // const router = useRouter()
 
 const form = useForm<TProjectForm>({
   defaultValues: {
@@ -20,7 +22,6 @@ const form = useForm<TProjectForm>({
     backend: '',
     image: '',
     technology: [],
-    color: '',
     serial: '', // or 0 if number
   },
 });
@@ -29,11 +30,9 @@ const form = useForm<TProjectForm>({
   const onSubmit = async (data: TProjectForm) => {
     try {
       const result = await createProject(data).unwrap();
-
-      console.log(result);
-
       if (result?.statusCode === 200) {
         toast.success(`${result?.message}`);
+        // router.push("/admin/all-project")
       } else {
         toast.error('⚠️ Project creation failed. Please try again.');
       }

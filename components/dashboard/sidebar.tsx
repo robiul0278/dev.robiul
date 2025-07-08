@@ -10,8 +10,8 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import {
   BarChart3,
   FileText,
+  Home,
   Menu,
-  Settings,
   User,
 } from 'lucide-react';
 
@@ -22,14 +22,19 @@ const sidebarNavItems = [
     icon: BarChart3,
   },
   {
+    title: 'All Projects',
+    href: '/admin/all-project',
+    icon: FileText,
+  },
+  {
     title: 'Create Project',
     href: '/admin/create-project',
     icon: FileText,
   },
   {
-    title: 'Settings',
+    title: 'Home',
     href: '/',
-    icon: Settings,
+    icon: Home,
   },
 ];
 

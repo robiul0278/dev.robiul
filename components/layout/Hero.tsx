@@ -79,7 +79,7 @@ export default function Hero() {
 
       <div className="relative z-10 container mx-auto px-4 py-16 lg:py-24">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-1">
+          <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-1">
             {/* Left Content */}
             <div className={`space-y-4 transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               {/* Status Badge */}
@@ -174,7 +174,7 @@ export default function Hero() {
             </div>
 
             {/* Right Content - Profile Image */}
-            <div className={`relative justify-self-end transition-all duration-1000 delay-300 pt-10 pr-10 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className={`relative justify-self-end transition-all duration-1000 delay-300 pt-10 lg:pr-10 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <div className="relative mx-auto w-80 h-80 lg:w-96 lg:h-96">
                 {/* Animated Rings */}
                 <div className="absolute inset-0 rounded-full border-2 border-slate-200 dark:border-slate-700 animate-spin-slow opacity-20"></div>

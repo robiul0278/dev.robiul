@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, Github } from 'lucide-react';
 import Image from 'next/image';
@@ -114,12 +114,12 @@ const Portfolio = () => {
 
         <div
           ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-4 md:p-0 lg:p-0"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 px-4 md:p-0 lg:p-0"
         >
           {projects?.data.map((project: TProjectForm, index: string) => (
             <Card
-             key={index}
-  className="project-card group relative w-full max-w-md mx-auto overflow-hidden rounded-xl shadow-sm transition-shadow hover:shadow-md dark:bg-slate-900"
+              key={index}
+              className="project-card group relative w-full max-w-md mx-auto overflow-hidden rounded-xl shadow-sm transition-shadow hover:shadow-md dark:bg-slate-900"
             >
               {/* Image */}
               <div className="relative h-48 sm:h-56 overflow-hidden rounded-t-xl">
@@ -134,43 +134,49 @@ const Portfolio = () => {
               </div>
 
               {/* Content */}
-              <div className="px-5 space-y-2">
-                {/* Title */}
-                <h3 className="text-lg font-bold text-foreground truncate">
-                  {project.title}
-                </h3>
-                {/* Subtitle */}
-                <span className="block text-xs text-primary font-semibold tracking-widest">
-                  {project.subTitle}
-                </span>
+              <CardContent className="px-3 space-y-2">
+                <CardHeader className='p-0'>
+                  <CardTitle className="text-lg font-bold text-foreground truncate">
+                    {project.title}
+                  </CardTitle>
+                  <span className="block text-xs text-primary font-semibold tracking-wide">
+                    {project.subTitle}
+                  </span>
+                </CardHeader>
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 mt-2">
+                <div className="flex flex-wrap gap-1 mt-2">
                   {project.technology.map((tag, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 text-xs rounded-md bg-muted text-foreground/80"
+                      className="px-2 py-1 text-xs rounded bg-muted text-foreground/80"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                {/* Buttons */}
-                <div className="flex gap-3 pt-4">
-                  <Button size="sm" variant="outline" className="flex items-center px-4 h-9 text-xs">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    View
-                  </Button>
-                  <Button size="sm" variant="outline" className="flex items-center px-4 h-9 text-xs">
-                    <Github className="w-4 h-4 mr-2" />
-                    Code
-                  </Button>
-                  <Button size="sm" variant="outline" className="flex items-center px-4 h-9 text-xs">
-                    <Github className="w-4 h-4 mr-2" />
-                    Code
-                  </Button>
-                </div>
-              </div>
+                  {/* Buttons */}
+                  <CardFooter className="flex gap-2 justify-between p-0">
+                    <Button size="sm" variant="outline" className="flex items-center text-xs cursor-pointer"
+                       onClick={() => window.open(`${project.liveLink}`, "_blank")}
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      live
+                    </Button>
+                    <Button size="sm" variant="outline" className="flex items-center text-xs cursor-pointer"
+                      onClick={() => window.open(`${project.frontend}`, "_blank")}
+                    >
+                      <Github className="w-4 h-4 mr-2" />
+                      Frontend
+                    </Button>
+                    <Button size="sm" variant="outline" className="flex items-center text-xs cursor-pointer"
+                      onClick={() => window.open(`${project.backend}`, "_blank")}
+                    >
+                      <Github className="w-4 h-4 mr-2" />
+                      Backend
+                    </Button>
+                  </CardFooter>
+              </CardContent>
             </Card>
 
           ))}
