@@ -147,7 +147,7 @@ const Contact = () => {
             className="flex items-center justify-between text-[26px] lg:text-[32px]"
           >
             <div className="flex items-center">
-              <span className="text-[#C778DD] font-semibold mr-1">#</span>
+              <span className="font-semibold mr-1">#</span>
               <h2 className="font-bold whitespace-nowrap">Contact</h2>
               <hr className="flex-grow ml-3 border-t w-32 lg:w-[240px] border-gray-300 dark:border-white/30" />
             </div>
