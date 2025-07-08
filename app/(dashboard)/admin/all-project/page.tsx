@@ -43,6 +43,7 @@ export default function ProjectDashboard() {
             }
         } catch (err: unknown) {
             const error = err as { data: TGenericErrorResponse };
+            console.log(error);
             toast.error(error?.data?.message || 'Delete failed.');
         }
     };
