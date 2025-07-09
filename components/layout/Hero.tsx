@@ -49,7 +49,7 @@ export default function Hero() {
   ]
 
   return (
-    <div className="min-h-screen flex items-center justify-cente bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 relative overflow-hidden">
+    <div className="min-h-screen -mt-10 lg:m-0 flex items-center justify-cente bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
@@ -77,9 +77,9 @@ export default function Hero() {
         }} />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 lg:py-24">
+      <div className="relative z-10 container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-20">
+          <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-6">
             {/* Left Content */}
             <div className={`lg:space-y-2 transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               {/* Status Badge */}
