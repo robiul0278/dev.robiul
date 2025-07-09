@@ -79,7 +79,7 @@ export default function Hero() {
 
       <div className="relative z-10 container mx-auto px-4 lg:py-24">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-6">
+          <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-20">
             {/* Left Content */}
             <div className={`lg:space-y-2 transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               {/* Status Badge */}
