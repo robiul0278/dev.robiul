@@ -81,7 +81,7 @@ export default function Hero() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-1">
             {/* Left Content */}
-            <div className={`lg:space-y-4  transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className={`lg:space-y-2  transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               {/* Status Badge */}
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -91,8 +91,8 @@ export default function Hero() {
               </div>
 
               {/* Main Heading */}
-              <div className="lg:space-y-4 md:space-y-4">
-                <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 dark:from-white dark:via-slate-200 dark:to-white bg-clip-text text-transparent leading-tight uppercase">
+              <div className="">
+                <h1 className="text-3xl lg:text-5xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 dark:from-white dark:via-slate-200 dark:to-white bg-clip-text text-transparent leading-tight uppercase">
                   Robiul Hasan
                 </h1>
                 <h2 className="text-xl lg:text-2xl font-semibold text-slate-600 dark:text-slate-300">
@@ -134,7 +134,7 @@ export default function Hero() {
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-4 pt-4">
+              <div className="flex flex-wrap gap-4 pt-4 lg:pt-10">
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-slate-900 to-slate-700 hover:from-slate-800 hover:to-slate-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"

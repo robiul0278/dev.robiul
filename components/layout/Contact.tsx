@@ -238,7 +238,7 @@ const Contact = () => {
             <div className="flex items-center justify-center w-full h-full">
               <div className="space-y-5 text-gray-700 dark:text-white transition-colors duration-500 text-base leading-relaxed info text-center max-w-md">
                 <p className="font-semibold text-blue-500 transition-colors duration-500">Who am I?</p>
-                <p className="text-sm text-slate-300">
+                <p className="text-sm ">
                   I’m interested in freelance opportunities. However, if you have other requests
                   or questions, don’t hesitate to contact me.
                 </p>

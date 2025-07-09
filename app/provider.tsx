@@ -21,7 +21,7 @@ const Providers =({ children }: ProvidersProps) => {
     }
 
     return (
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
             <Provider store={store}>
                 {children}
             </Provider>

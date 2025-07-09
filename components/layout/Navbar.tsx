@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Code } from "lucide-react";
+import { ModeToggle } from "../themes/ModeToggle";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -69,13 +70,12 @@ const Navbar = () => {
     <nav
       ref={navRef}
       role="navigation"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
           ? "backdrop-blur-md shadow-lg bg-white/70 dark:bg-black/70"
           : "bg-transparent"
-      }`}
+        }`}
     >
-      <div className="lg:max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+      <div className="lg:max-w-7xl mx-auto px-2 sm:px-4 lg:p-0">
         <div className="flex items-center justify-between h-16 space-x-2 overflow-hidden">
           {/* Logo */}
           <div ref={logoRef} className="flex items-center space-x-2 flex-shrink-0">
@@ -102,18 +102,21 @@ const Navbar = () => {
 
           {/* Right Side */}
           <div className="flex items-center gap-1 z-[60] relative min-w-fit">
-            <div className="flex gap-1">
-                          <Button
-              className="nav-button hidden md:block text-sm sm:text-base px-5 py-2 rounded-full hover:scale-105 transition-all duration-300 cursor-pointer"
-              onClick={() =>
-                window.open(
-                  "https://drive.google.com/file/d/1CAFJ2bK8N8ChI_YL44ml4oo506l4ACaM/view?usp=drive_link",
-                  "_blank"
-                )
-              }
-            >
-              Download
-            </Button>
+            <div className="flex gap-5">
+              <span className="hidden lg:flex">
+                <ModeToggle/>
+              </span>
+              <Button
+                className="nav-button hidden md:block text-sm sm:text-base px-5 py-2 rounded-full hover:scale-105 transition-all duration-300 cursor-pointer"
+                onClick={() =>
+                  window.open(
+                    "https://drive.google.com/file/d/1CAFJ2bK8N8ChI_YL44ml4oo506l4ACaM/view?usp=drive_link",
+                    "_blank"
+                  )
+                }
+              >
+                Download
+              </Button>
             </div>
             <button
               className="md:hidden p-2 text-black dark:text-white"
