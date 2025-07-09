@@ -27,7 +27,7 @@ import {
 } from "@/components/ui/tooltip";
 
 // Center Icon
-const centerIcon = <SiJavascript className="text-[#F7DF1E] w-6 h-6 sm:w-8 sm:h-8" />;
+const centerIcon = <SiJavascript className="text-yellow-400 w-6 h-6 sm:w-8 sm:h-8" />;
 
 // Inner Ring (Backend + Language)
 const innerSkills = [
@@ -141,7 +141,7 @@ const Orbit = () => {
                 <div
                   onMouseEnter={pauseOrbit}
                   onMouseLeave={resumeOrbit}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-[#1f1f1f] border border-[#C778DD] rounded-full flex items-center justify-center shadow-lg text-white"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-yellow-700 border border-[#C778DD] rounded-full flex items-center justify-center shadow-lg text-white"
                 >
                   {centerIcon}
                 </div>
