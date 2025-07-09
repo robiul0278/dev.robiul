@@ -79,9 +79,9 @@ export default function Hero() {
 
       <div className="relative z-10 container mx-auto px-4 lg:py-24">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-1">
+          <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-1 pb-20">
             {/* Left Content */}
-            <div className={`lg:space-y-2  transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className={`lg:space-y-2 py-10  transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               {/* Status Badge */}
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -208,7 +208,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div className="absolute lg:bottom-8 bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 border-2 border-slate-400 dark:border-slate-600 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-slate-400 dark:bg-slate-600 rounded-full mt-2 animate-pulse"></div>
         </div>
