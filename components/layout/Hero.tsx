@@ -77,11 +77,11 @@ export default function Hero() {
         }} />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-16 lg:py-24">
+      <div className="relative z-10 container mx-auto px-4 lg:py-24">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-1">
             {/* Left Content */}
-            <div className={`space-y-4 transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className={`lg:space-y-4  transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               {/* Status Badge */}
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -91,28 +91,28 @@ export default function Hero() {
               </div>
 
               {/* Main Heading */}
-              <div className="space-y-4">
-                <h1 className="text-5xl lg:text-4xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 dark:from-white dark:via-slate-200 dark:to-white bg-clip-text text-transparent leading-tight uppercase">
+              <div className="lg:space-y-4 md:space-y-4">
+                <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 dark:from-white dark:via-slate-200 dark:to-white bg-clip-text text-transparent leading-tight uppercase">
                   Robiul Hasan
                 </h1>
-                <h2 className="text-2xl lg:text-2xl font-semibold text-slate-600 dark:text-slate-300">
+                <h2 className="text-xl lg:text-2xl font-semibold text-slate-600 dark:text-slate-300">
                   Full-Stack Developer
                 </h2>
               </div>
 
               {/* Description */}
-              <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-lg">
+              <p className="lg:text-lg text-sm py-2 text-slate-600 dark:text-slate-400 lg:leading-relaxed max-w-lg">
                 I love the world of technology, which inspired me to become a fullstack web developer. I dream of turning my passion into a successful profession.
               </p>
 
               {/* Location */}
-              <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+              <div className="flex pb-2 items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
                 <MapPin className="w-4 h-4" />
                 <span>Naogaon, Bangladesh</span>
               </div>
 
               {/* Skills */}
-              <div className="space-y-3">
+              <div className="space-y-2">
                 <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
                   Tech Stack
                 </h3>
@@ -134,7 +134,7 @@ export default function Hero() {
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 pt-4">
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-slate-900 to-slate-700 hover:from-slate-800 hover:to-slate-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
@@ -191,9 +191,6 @@ export default function Hero() {
                       height={300}
                       className='object-cover rounded-full'
                     />
-                    {/* <div className="w-32 h-32 bg-gradient-to-br from-slate-300 to-slate-400 dark:from-slate-600 dark:to-slate-500 rounded-full flex items-center justify-center">
-                      <span className="text-4xl font-bold text-slate-600 dark:text-slate-300">AJ</span>
-                    </div> */}
                   </div>
                 </div>
 
