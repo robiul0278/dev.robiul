@@ -79,9 +79,9 @@ export default function Hero() {
 
       <div className="relative z-10 container mx-auto px-4 lg:py-24">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-1 pb-20">
+          <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-6">
             {/* Left Content */}
-            <div className={`lg:space-y-2 pt-5  transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className={`lg:space-y-2 transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               {/* Status Badge */}
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -138,7 +138,7 @@ export default function Hero() {
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-slate-900 to-slate-700 hover:from-slate-800 hover:to-slate-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
-                onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
                 >
                   View My Work
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -174,44 +174,43 @@ export default function Hero() {
             </div>
 
             {/* Right Content - Profile Image */}
-<div
-  className={`relative justify-self-end transition-all duration-1000 delay-300 pt-10 lg:pr-10 ${
-    isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-  }`}
->
-  <div className="relative mx-auto w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-96 lg:h-96">
-    {/* Animated Rings */}
-    <div className="absolute inset-0 rounded-full border-[2px] border-slate-200 dark:border-slate-700 animate-spin-slow opacity-20"></div>
-    <div
-      className="absolute inset-[4%] rounded-full border-[2px] border-slate-300 dark:border-slate-600 animate-spin-slow opacity-30"
-      style={{ animationDirection: 'reverse', animationDuration: '20s' }}
-    ></div>
+            <div
+              className={`relative justify-self-end transition-all duration-1000 delay-300 lg:pr-10 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+            >
+              <div className="relative mx-auto w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-96 lg:h-96">
+                {/* Animated Rings */}
+                <div className="absolute inset-0 rounded-full border-[2px] border-slate-200 dark:border-slate-700 animate-spin-slow opacity-20"></div>
+                <div
+                  className="absolute inset-[4%] rounded-full border-[2px] border-slate-300 dark:border-slate-600 animate-spin-slow opacity-30"
+                  style={{ animationDirection: 'reverse', animationDuration: '20s' }}
+                ></div>
 
-    {/* Profile Image Container */}
-    <div className="absolute inset-[12%] rounded-full bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 p-1 shadow-2xl">
-      <div className="w-full h-full rounded-full bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center relative overflow-hidden">
-        <Image
-          src="/profile.jpg"
-          alt=""
-          width={300}
-          height={300}
-          className="object-cover rounded-full"
-        />
-      </div>
-    </div>
+                {/* Profile Image Container */}
+                <div className="absolute inset-[12%] rounded-full bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 p-1 shadow-2xl">
+                  <div className="w-full h-full rounded-full bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center relative overflow-hidden">
+                    <Image
+                      src="/profile.jpg"
+                      alt=""
+                      width={300}
+                      height={300}
+                      className="object-cover rounded-full"
+                    />
+                  </div>
+                </div>
 
-    {/* Floating Elements */}
-    <div className="absolute -top-3 -right-3 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg animate-bounce">
-      <SiNextdotjs className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-white" />
-    </div>
-    <div
-      className="absolute -bottom-3 -left-3 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full flex items-center justify-center shadow-lg animate-bounce"
-      style={{ animationDelay: '0.5s' }}
-    >
-      <FaJs className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-white" />
-    </div>
-  </div>
-</div>
+                {/* Floating Elements */}
+                <div className="absolute -top-3 -right-3 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg animate-bounce">
+                  <SiNextdotjs className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-white" />
+                </div>
+                <div
+                  className="absolute -bottom-3 -left-3 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full flex items-center justify-center shadow-lg animate-bounce"
+                  style={{ animationDelay: '0.5s' }}
+                >
+                  <FaJs className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-white" />
+                </div>
+              </div>
+            </div>
 
 
           </div>
