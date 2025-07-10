@@ -52,8 +52,9 @@ const outerSkills = [
 const Orbit = () => {
   const outerRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
-  const outerTween = useRef<gsap.core.Tween>();
-  const innerTween = useRef<gsap.core.Tween>();
+  const outerTween = useRef<gsap.core.Tween | null>(null);
+  const innerTween = useRef<gsap.core.Tween | null>(null);
+  ;
 
   useEffect(() => {
     outerTween.current = gsap.to(outerRef.current, {
@@ -141,7 +142,7 @@ const Orbit = () => {
                 <div
                   onMouseEnter={pauseOrbit}
                   onMouseLeave={resumeOrbit}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-yellow-700 border border-[#C778DD] rounded-full flex items-center justify-center shadow-lg text-white"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14  border border-[#C778DD] rounded-full flex items-center justify-center shadow-lg text-white"
                 >
                   {centerIcon}
                 </div>
